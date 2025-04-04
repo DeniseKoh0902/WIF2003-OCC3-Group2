@@ -12,10 +12,6 @@ h1, h2, h3, h4, h5, h6 {
   
 }
 
-header h1{
-  font-family: "Coiny",'Times New Roman', Times, serif;
-}
-
 li, a, button{
   font-family: "Montserrat",'Times New Roman', Times, serif;
   font-weight: 500;
@@ -39,17 +35,14 @@ header{
   flex: 2 1 400px;
   display: flex;
   align-items: center;
-}
-
-body header section.logo h1 {
-  font-size: 2.5rem;
-  color: #edf0f1;
+  margin: 1rem;
 }
 
 .logo img{
-  width: 6vw;
+  width: 18vw;
   height: 6vw;
 }
+
 .nav_links {
   list-style: none;
 }
