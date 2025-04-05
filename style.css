@@ -62,6 +62,12 @@ header{
   border-bottom: 3px solid #5E7FB7;
 }
 
+/* Active Page Styling (Same as Hover) */
+.nav_links li a.active {
+  color: #5E7FB7;
+  border-bottom: 3px solid #5E7FB7;
+}
+
 .logout{
   margin-bottom: 1rem;
   margin-right: 1rem;
@@ -93,6 +99,44 @@ header{
     right: 20px;
     top: 10px;
     z-index: 11;
+}
+
+p {
+  color: #edf0f1;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5; /* Optional: Control line spacing */
+}
+
+body footer {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  align-items: center;
+  background-color:#051c2e;
+  margin-top: auto;
+}
+
+body footer section.links {
+  margin-top: 2rem;
+}
+
+body footer section.links a img {
+  width: 5vh;
+  margin: 0rem 1rem;
+}
+
+.footerlogo img {
+  width: 200px; 
+  height: auto; 
+  margin: 0;    
+}
+
+footer section.copyright{
+  font-size: small; 
+  font-style: italic; 
+  text-align: center; 
+  padding-top: 10px; 
 }
 
 /* RESPONSIVE DESIGN */
