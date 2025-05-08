@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHARMSYNC - Fitness Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images\logo_only.png" alt="CHARMSYNC Logo" class="logo-img">
+            <span class="logo-text">CHARMSYNC</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Workout</a></li>
+                <li><a href="#">Nutrition</a></li>
+                <li><a href="#"class="active">Progress</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+        <div class="right-nav">
+            <div class="notification-bell">
+                <i class="fas fa-bell"></i>
+                <div class="notification-panel">
+                    <div class="notification-header">Notifications</div>
+                    <div class="notification-list"></div>
+                </div>
+            </div>
+            <button class="logout-btn">Log Out</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="summary-section">
+            <h2>Summary</h2>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="images\profile 2.png" alt="Profile Image">
+                </div>
+                <p class="username">@win10</p>
+            </div>
+        </section>
+
+        <section class="weekly-cards-section">
+            <h2>Weekly cards</h2>
+            <div class="cards-container">
+                <div class="card active-time-card">
+                    <div class="card-icon">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <div class="card-value">1,896</div>
+                    <div class="card-label">Active time</div>
+                </div>
+                <div class="card steps-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="card-value">7,657</div>
+                    <div class="card-label">Steps</div>
+                </div>
+                <div class="card calories-card">
+                    <div class="card-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="card-value">1,896</div>
+                    <div class="card-label">Average calories</div>
+                </div>
+            </div>
+        </section>
+
+<!-- Calendar -->
+        <div class="dashboard-grid">
+            <div id="calendar-container" class="calendar-container">
+                <div class="calendar-icon">
+                    <i class="fas fa-calendar"></i>
+                </div>
+                <div class="calendar-header">
+                    <div class="month-year">April 2025</div>
+                </div>
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="calendar-dates"></div>
+            </div>
+
+<!-- Weight change -->  
+            <div class="weight-change-container">
+                <h3>Weight change</h3>
+                <canvas id="weightChangeChart"></canvas>
+            </div>
+<!-- Reminder -->
+            <div class="reminders-container">
+                <div class="reminders-header">
+                    <h3>Reminders</h3>
+                    <button class="add-reminder" aria-label="Add Reminder">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="reminders-list"></div>
+                <div class="add-reminder-form">
+                    <input type="text" id="reminderText" placeholder="Reminder text">
+                    <input type="time" id="reminderTime">
+                    <button id="saveReminder">Save</button>
+                    <button id="cancelReminder">Cancel</button>
+                </div>
+            </div>
+
+            <div class="step-counts-container">
+                <h3>Step counts</h3>
+                <canvas id="stepCountsChart"></canvas>
+            </div>
+
+<!-- BMI -->
+            <div class="bmi-container">
+                <div class="bmi-header">
+                    <h3>BMI</h3>
+                    <div class="edit-bmi">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                </div>
+                <div class="bmi-details">
+                    <div class="bmi-metrics">
+                        <p>Weight: <span id="weight-value">56</span> kg</p>
+                        <p>Height: <span id="height-value">169</span> cm</p>
+                        <p>Age: <span id="age-value">21</span> years</p>
+                    </div>
+                    <div class="bmi-chart-container">
+                        <canvas id="bmiChart"></canvas>
+                        <div class="bmi-value">19.1</div>
+                    </div>
+                </div>
+                <div class="bmi-form">
+                    <div class="form-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" step="0.1" min="30" max="200">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height (cm):</label>
+                        <input type="number" id="height" step="1" min="100" max="250">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" step="1" min="16" max="100">
+                    </div>
+                    <div class="bmi-form-buttons">
+                        <button id="saveBmi">Save</button>
+                        <button id="cancelBmi">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="active-time-container">
+                <h3>Active time</h3>
+                <canvas id="activeTimeChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+<!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="images\logo_only.png" alt="CHARMSYNC Logo" class="logo-img">
+            <span class="logo-text">CHARMSYNC</span>
+        </div>
+        <p class="copyright">Copyright © 2025 Charmsync</p>
+        <p class="email">charmsync2025web@gmail.com</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script type="module" src="data.js" defer></script>
+    <script type="module" src="reminders.js" defer></script>
+    <script type="module" src="charts.js" defer></script>
+    <script type="module" src="bmi.js" defer></script>
+    <script type="module" src="calendar.js" defer></script>
+    
+    <!-- <script type="module" src="notifications.js" defer></script> -->
+    <script type="module" src="app.js" defer></script>
+</body>
+</html>
