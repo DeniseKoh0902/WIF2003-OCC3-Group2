@@ -39,6 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
       link.classList.add("active");
     }
   });
+  const togglePassword = document.getElementById("togglePassword");
+  const passwordInput = document.getElementById("passwordInput");
+
+  if (togglePassword && passwordInput) {
+    togglePassword.addEventListener("click", function () {
+      const isHidden = passwordInput.type === "password";
+
+      passwordInput.type = isHidden ? "text" : "password";
+
+      // Optional: display actual password value when revealed
+      if (isHidden) {
+        passwordInput.value = "abcdefg";
+      }
+
+      this.classList.toggle("fa-eye");
+      this.classList.toggle("fa-eye-slash");
+    });
+  }
 });
 
 // Navigation highlighting
@@ -125,3 +143,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
