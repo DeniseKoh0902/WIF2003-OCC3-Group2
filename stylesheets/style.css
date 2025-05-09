@@ -154,6 +154,52 @@ footer section.copyright{
   padding-top: 10px; 
 }
 
+.notification-bell {
+    position: relative;
+    padding: 0px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #edf0f1;
+    display: inline-block;
+}
+
+.notification-bell i {
+    color: #edf0f1;
+    transition: color 0.3s ease;
+}
+
+.notification-bell:hover i {
+    color: #5E7FB7;
+}
+
+/* Notification panel styles */
+.notification-panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #1c2f45;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.notification-panel.show {
+    display: block;
+}
+
+.notification-header {
+    padding: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid #ccc;
+}
+
+.notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+    font-weight: lighter;
+}
 
 /* RESPONSIVE DESIGN */
 @media screen and (max-width: 700px) {
