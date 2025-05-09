@@ -27,8 +27,6 @@ main {
     margin-bottom: 2rem;
     margin-right: 2%;
     margin: 0 auto 2rem auto; /* Center the block horizontally and keep bottom margin */
-    width: fit-content;  
-    align-items: right;
 }
 
 .summary-section{
@@ -138,6 +136,8 @@ main {
     max-width: 885px;
     gap: 1rem;
     margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Align cards to right */
 }
 
 .card {
@@ -174,7 +174,7 @@ main {
 .dashboard-row {
     display: flex;
     justify-content: space-between;
-    gap: 0rem; /* space between summary and cards */
+    align-items: flex-start;
     flex-wrap: wrap; /* allows wrapping on smaller screens */
 }
 
@@ -211,7 +211,6 @@ main {
     max-width: 500px;         /* Prevents it from becoming too wide */
     height: auto;             /* Adjust height automatically to fit content */
     max-height: 90vh;         /* Optional: Limits height to 90% of viewport */
-    min-width: px;
     min-height: 20vh;
     /* Center it */
     margin: 0 auto;
@@ -285,13 +284,17 @@ main {
 
 /* Weight Change Chart */
 .weight-change-container {
-    background-color: var(--chart-bg-color);
     border-radius: 8px;
     padding: 1.5rem;
     border: 3px #5189FC solid;
-    background-color: #2169E5;
     background-color: rgba(33, 105, 229, 0.200);
 }
+
+.weight-change-container canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
 
 .weight-change-container h3 {
     margin-bottom: 1rem;
@@ -583,11 +586,22 @@ main {
 /* Responsive Design */
 @media (max-width: 768px) {
     .dashboard-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
     }
+
     
     .cards-container {
-        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto; /* centers the container */
+        padding: 0 1rem; /* adds equal spacing on both sides */
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 300px;
     }
     
     .mobile-menu {
