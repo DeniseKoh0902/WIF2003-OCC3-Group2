@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CharmSync</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/nutrition.css">
+</head>
+<body class="nutrition-page">
+    <header>
+        <section class="logo">
+            <img src="./images/logo/charmsync.png" alt="CharmSync">
+        </section>
+        <nav>
+            <ul class="nav_links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="workout.html"id="nav-workout">Workout</a></li>
+                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="progress.html">Progress</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <!-- Notification Bell -->
+                <li class="notification-bell">
+                <i class="fas fa-bell"></i>
+                <div class="notification-panel">
+                    <div class="notification-header">Notifications</div>
+                    <div class="notification-list"></div>
+                </div>
+                </li>
+                <li><a href="index.html" class="logout-btn">Log Out</a></li>
+            </ul>
+        </nav>
+
+        <!-- hamburger icon -->
+         <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+         </button>
+
+    </header>
+
+    <!-- Main section starts-->
+    <section class="nutrition-main" id="nutrition-main">
+        <div class="content">
+            <h2>Plan Your Meal</h2>
+            <div class="line"></div>
+            <h1>SHAPE YOUR FUTURE</h1>
+            <a href="#nutrition-about" class="ctn">Learn More</a>
+         </div>
+    </section>
+    <!-- Main section ends -->
+
+    <!-- About section starts -->
+    <section class="nutrition-about" id="nutrition-about">
+
+        <h1 class="heading">About Us</h1>
+
+        <div class="row">
+            
+            <div class="content">
+                <h3>Our mission is to give you a guideline for your health.</h3>
+                <p>Giving you a clear, inspiring guideline for your health, 
+                    guiding you toward a life of balance and vitality. Focusing on personalized nutrition, 
+                    we provide you with the tools, resources, and expertise to transform your 
+                    eating habits. Through thoughtfully crafted meal plans, 
+                    insightful tips, and a supportive community, we aim to empower you on your 
+                    journey to a healthier, more vibrant version of yourself.</p>
+            </div>
+
+            <div class="image">
+                <img src="images/nutrition/about_nutrition.png" alt="">
+            </div>
+
+        </div>
+    </section>
+    <!-- About section ends-->
+
+    <!-- Diet section starts-->
+     <section class="nutrition-diet" id="nutrition-diet">
+        
+        <h1 class="heading">Diet Plan</h1>
+        <h2>ADD YOUR FAVOURITE MEALS TODAY</h2>
+
+        <ul class="controls">
+            <li class="buttons active" data-filter="all">
+                <img class="img" src="images/nutrition/all_food.png" alt="">
+                <h5>All</h5>
+            </li>
+            <li class="buttons" data-filter="breakfast">
+                <img class="img" src="images/nutrition/breakfast.png" alt="">
+                <h5>Breakfast</h5>
+            </li>
+            <li class="buttons" data-filter="lunch">
+                <img class="img" src="images/nutrition/lunch.png" alt="">
+                <h5>Lunch</h5>
+            </li>
+            <li class="buttons" data-filter="dinner">
+                <img class="img" src="images/nutrition/dinner.png" alt="">
+                <h5>Dinner</h5>
+            </li>
+        </ul>
+
+        <div class="search-bar-container">
+            <input type="text" id="meal-search" placeholder="Search for a meal..." />
+        </div>
+
+        <!-- food example -->
+        <div class="image-container">
+
+            <div class="box breakfast" data-id="½ cup oatmeal with walnuts and blueberries">
+                <div class="image">
+                    <img src="images/nutrition/meals/breakfast1.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">½ cup oatmeal with walnuts and blueberries</a>
+                    <p>A hearty and nutritious breakfast made with ½ cup of oatmeal topped with crunchy walnuts and sweet blueberries.</p>
+                    <div class="calories-favorite">
+                        <h6>301 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box breakfast" data-id="1 cup Greek yogurt with blueberries">
+                <div class="image">
+                    <img src="images/nutrition/meals/breakfast2.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">1 cup Greek yogurt with blueberries</a>
+                    <p>Creamy Greek yogurt topped with sweet, juicy blueberries — a simple, healthy, and satisfying start to your day.</p>
+                    <div class="calories-favorite">
+                        <h6>233 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box breakfast" data-id="Omelet with veggie and whole wheat toast">
+                <div class="image">
+                    <img src="images/nutrition/meals/breakfast3.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Omelet with veggie and whole wheat toast</a>
+                    <p>A nutritious breakfast featuring a fluffy omelet loaded with fresh veggies, paired with a slice of whole wheat toast.</p>
+                    <div class="calories-favorite">
+                        <h6>533 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box breakfast" data-id="Protein pancake with strawberries and bananas">
+                <div class="image">
+                    <img src="images/nutrition/meals/breakfast4.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Protein pancake with strawberries and bananas</a>
+                    <p>Fluffy protein pancakes topped with fresh strawberries and bananas —  a delicious and energizing breakfast.</p>
+                    <div class="calories-favorite">
+                        <h6>342 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box breakfast" data-id="2 cup of strawberry sweet banana smoothie">
+                <div class="image">
+                    <img src="images/nutrition/meals/breakfast5.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">2 cup of strawberry sweet banana smoothie</a>
+                    <p>A refreshing breakfast with two cups of smoothie made with sweet strawberries and ripe bananas.</p>
+                    <div class="calories-favorite">
+                        <h6>643 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box breakfast" data-id="Greek yogurt bowl">
+                <div class="image">
+                    <img src="images/nutrition/meals/breakfast6.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Greek yogurt bowl</a>
+                    <p>A wholesome and satisfying bowl of creamy Greek yogurt topped with fresh fruits and crunchy nuts for a naturally nutritious and refreshing breakfast.</p>
+                    <div class="calories-favorite">
+                        <h6>397 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="Chicken pasta salad">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch1.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Chicken pasta salad</a>
+                    <p>A light and hearty lunch featuring tender chicken tossed with pasta, crisp vegetables, and a flavorful dressing for a refreshing and satisfying meal.</p>
+                    <div class="calories-favorite">
+                        <h6>394 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="Mediterranean chicken salad">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch2.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Mediterranean chicken salad</a>
+                    <p>A vibrant lunch made with juicy grilled chicken, crisp greens, cucumbers, tomatoes, and olives, all tossed in a zesty Mediterranean dressing.</p>
+                    <div class="calories-favorite">
+                        <h6>305 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="Grilled chicken sandwich">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch3.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Grilled chicken sandwich</a>
+                    <p>A hearty and flavorful lunch with tender grilled chicken layered in a soft sandwich bun, paired with crisp lettuce and juicy tomatoes.</p>
+                    <div class="calories-favorite">
+                        <h6>406 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="Waldorf chicken wrap">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch4.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Waldorf chicken wrap</a>
+                    <p>A delicious wrap filled with tender chicken, crisp apples, grapes, and crunchy walnuts, all tossed in a creamy dressing for a satisfying lunch.</p>
+                    <div class="calories-favorite">
+                        <h6>333 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="Turkey sandwich">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch5.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Turkey sandwich</a>
+                    <p>A classic and satisfying lunch with lean turkey slices layered between fresh bread, crisp lettuce, ripe tomatoes, and a touch of mustard.</p>
+                    <div class="calories-favorite">
+                        <h6>382 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="Teriyaki salmon bowl">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch6.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Teriyaki salmon bowl</a>
+                    <p>A flavorful and satisfying lunch featuring tender teriyaki-glazed salmon served over a bed of steamed rice, paired with crisp sautéed vegetables.</p>
+                    <div class="calories-favorite">
+                        <h6>535 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="High protein bento lunch box">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch7.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">High protein bento lunch box</a>
+                    <p>A simple and hearty high-protein bento lunch box with grilled chicken, fresh veggies, and steamed rice, providing a balanced and energizing meal.</p>
+                    <div class="calories-favorite">
+                        <h6>591 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box lunch" data-id="Salmon salad wrap">
+                <div class="image">
+                    <img src="images/nutrition/meals/lunch8.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Salmon salad wrap</a>
+                    <p>A light and tasty lunch featuring fresh salmon, crisp veggies, and a tangy dressing, all wrapped in a soft tortilla for a healthy and satisfying meal.</p>
+                    <div class="calories-favorite">
+                        <h6>558 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box dinner" data-id="Beef enchiladas">
+                <div class="image">
+                    <img src="images/nutrition/meals/dinner1.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Beef enchiladas</a>
+                    <p>A flavorful dinner featuring tender beef wrapped in soft tortillas, smothered in rich enchilada sauce, and baked to perfection with melted cheese.</p>
+                    <div class="calories-favorite">
+                        <h6>422 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box dinner" data-id="Hummus and veggies">
+                <div class="image">
+                    <img src="images/nutrition/meals/dinner2.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Hummus and veggies</a>
+                    <p>A light and healthy dinner featuring creamy hummus paired with a variety of fresh, crunchy vegetables for a refreshing and satisfying meal.</p>
+                    <div class="calories-favorite">
+                        <h6>129 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box dinner" data-id="2 shrimp tacos">
+                <div class="image">
+                    <img src="images/nutrition/meals/dinner3.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">2 shrimp tacos</a>
+                    <p>A delicious dinner with two soft tacos filled with tender shrimp, crisp veggies, and a zesty sauce, offering a light yet flavorful meal.</p>
+                    <div class="calories-favorite">
+                        <h6>301 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box dinner" data-id="Turkey sweet potato chili">
+                <div class="image">
+                    <img src="images/nutrition/meals/dinner4.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Turkey sweet potato chili</a>
+                    <p>A comforting dinner featuring lean turkey and tender sweet potatoes simmered in a flavorful chili, creating a hearty and nutritious meal.</p>
+                    <div class="calories-favorite">
+                        <h6>613 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box dinner" data-id="Burrito bowl">
+                <div class="image">
+                    <img src="images/nutrition/meals/dinner5.png" alt="">
+                </div>
+                <div class="content">
+                    <a href="#" class="link">Burrito bowl</a>
+                    <p>A satisfying dinner featuring a hearty mix of rice, seasoned meat, beans, veggies, and your choice of toppings, all perfectly combined for a flavorful meal.</p>
+                    <div class="calories-favorite">
+                        <h6>591 calories</h6>
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="foodModal" class="foodmodal">
+                <div class="modal-content">
+                  <button class="close">&times;</button>
+                  <div class="modal-header">
+                    <h2 id="modalTitle">Meal Title</h2>
+                  </div>
+                  <div class="modal-body">
+                    <div class="modal-image">
+                      <img id="modalImage" src="" alt="Meal Image">
+                    </div>
+                    <div class="modal-details">
+                      <section>
+                        <h3>Ingredients</h3>
+                        <ul id="modalIngredients"></ul>
+                      </section>
+                      <section>
+                        <h3>Steps</h3>
+                        <ol id="modalSteps"></ol>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
+        </div>
+
+     </section>
+    
+    <!-- Diet section ends-->
+
+    <section class="favourite-button" id="favourite-button">
+        <a href="favouritemeals.html" class="ctn">View My Today's Favourite Meals</a>
+    </section>
+
+
+    <!-- Notification element -->
+    <div class="notification">Favourite meal added successfully!</div>
+
+    
+    <footer>
+        <section class="footerlogo">
+            <img src="./images/logo/charmsync.png" alt="CharmSync">
+        </section>
+
+        <section class="copyright">
+            <p>Copyright © 2025 Charmsync<br></p>
+            <a href="mailto:23004977@siswa.um.edu.my">charmsync2025web@gmail.com</a>
+        </section>
+        
+        <section class="links">
+            <a href="#"><img title="Facebook" src="./Icons/facebook.svg" alt="facebook" /></a>
+            <a href="#"><img title="IG" src="./Icons/instagram.svg" alt="instagram" /></a>
+            <a href="#"><img title="Youtube" src="./Icons/youtube.svg" alt="youtube" /></a>
+        </section>
+    </footer>
+
+    <!-- Sticky Navigation Buttons -->
+    <div class="scroll-nav-buttons">
+    <a href="#nutrition-diet" class="scroll-to-top" title="Go to Diet Section">
+      <i class="fas fa-utensils"></i>
+    </a>
+    <a href="#favourite-button" class="scroll-to-bottom" title="Go to Favorites">
+      <i class="fas fa-heart"></i>
+    </a>
+  </div>
+
+  <!-- Back to Top Button -->
+<button class="back-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+
+    <!-- jquery cdn link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <script src="nutrition.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --black:#141414;
+    --dark-blue:#051c2e;
+    --middle-blue:#5E7FB7;
+    --light-blue:#5189fc;
+    --dark-green:#3F876F;
+    --light-green:#6fcfb3;
+    --yellow:#e4fda9;
+    --white: #fff;
+}
+
+/* Timer Container Styles */
+.timer-container {
+    font-family: "Montserrat",'Times New Roman', Times, serif;
+    background-color:  #67988826;/* 26 is ~15% opacity in hex */
+    border-radius: 10px;
+    border: 1px solid #63E6BE;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.timer-display {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+    color: var(--white);
+}
+
+.timer-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 0.5rem;
+}
+
+.back-btn:hover{
+    color: var(--light-blue);
+    text-decoration: underline;
+}
+
+.back-btn{
+    margin: 20px;
+}
+
+.timer-button:hover {
+    background-color: #357ab8;
+}
+
+.timer-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.exercise-info {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.exercise-name {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.exercise-description {
+    color:var(--yellow) ;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.alert-img {
+  width: 100px;
+  margin-bottom: 1rem;
+}

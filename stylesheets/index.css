@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --dark-blue: #082b4b;
+    --middle-blue: #5E7FB7;
+    --light-blue: #5189fc;
+    --dark-green:#3F876F;
+    --light-green:#6fcfb3;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Home Page Welcome Section*/
+.welcome-section {
+  width: 100%;
+  padding: 40px 40px 20px 40px; /* top right bottom left */
+  color: var(--white);
+}
+
+
+.welcome-text {
+    font-family: "Montserrat", sans-serif;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.welcome-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.welcome-text .date {
+    font-size: 1.2rem;
+    color: var(--light-green);
+}
+
+/* Stat Section */
+.stats-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 40px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  flex: 1 1 200px;
+  background-color: var(--dark-blue);
+  border: 1px solid var(--middle-blue);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card .icon img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+.stat-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--light-green);
+  margin-bottom: 10px;
+}
+
+.stat-card .stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.stat-card .stat-subtext {
+  font-size: 0.9rem;
+  color: #a0c3dc;
+}
+
+/* motivation */
+.motivation-card {
+  background-color: #67988826; /* ~15% opacity */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 20px;
+  margin: 0 40px 15px 40px;
+  border-radius: 10px;
+  border: 1px solid #63E6BE;
+  font-family: "Montserrat", sans-serif;
+  gap: 8px;
+}
+
+.quote-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.trophy-icon {
+  width:30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.quote {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+}
+
+.streak {
+  color: var(--light-green);
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 32px;
+}
+
+.streak img {
+  width: 18px;
+  height: 18px;
+}
+
+/* recent workout */
+.recent-workouts {
+  padding: 0 40px 30px 40px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.recent-workouts h2 {
+  color: var(--white);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.workout-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.workout-card {
+  flex: 1 1 200px;
+  background-color: var(--dark-blue);
+  border: 1px solid var(--middle-blue);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px; 
+  transition: transform 0.2s ease;
+}
+
+.workout-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #a0c3dc;
+  margin-top: 4px;
+}
+
+.workout-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 6px 0 8px;
+  color: var(--white);
+}
+
+.workout-card:hover {
+  transform: translateY(-4px);
+}
+
+.workout-image-placeholder {
+  width: 100%;
+  height: 90px;
+  background-color: #ffffff20;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+

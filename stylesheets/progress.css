@@ -1,0 +1,610 @@
+:root {
+    --primary-color: #0e1a2d;
+    --secondary-color: #2257a7;
+    --accent-color: #4aa5e3;
+    --text-color: #ffffff;
+    --card-bg-color: #2257a7;
+    --hover-color: #2c6acf;
+    --active-color: #18396e;
+    --border-color: #3a6ebd;
+    --chart-bg-color: #2257a7;
+    --bmi-donut-color: #85b94e;
+}
+
+/* Main Content */
+main {
+    padding: 2rem;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.summary-section,
+.weekly-cards-section {
+    flex: 1;
+}
+
+.weekly-cards-section {
+    margin-bottom: 2rem;
+    margin-right: 2%;
+    margin: 0 auto 2rem auto; /* Center the block horizontally and keep bottom margin */
+}
+
+.summary-section{
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    text-align: center; /* This centers the text */ 
+    justify-content: center;   
+    align-items: center; /* centers children horizontally */
+    
+}
+
+.summary-section h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-right: 0;    /* Remove the offset */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.weekly-cards-section h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-right: 370px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: right;
+}
+
+/* notifications*/
+/* .notification-bell{
+    position: relative; 
+    margin-right: 1.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-color); 
+    padding: 0.5rem; 
+}
+
+.notification-panel{
+    display: none; 
+    position:absolute;
+    top:100%;
+    right:0;
+    background-color: var(--secondary-color);
+    width:300px;
+    max-height: 400px;
+    overflow: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    color:var(--text-color);
+    padding:0;
+    margin-top:5px;
+}
+
+.notification-panel.show{
+    display: block;
+}
+
+.notification-header{
+    padding:1rem;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notification-list {
+    padding: 0; 
+    margin: 0; 
+    list-style: none; 
+} */
+
+
+/* profile */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers children horizontally */
+    justify-content: center; /* Centers children vertically */
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--accent-color);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.username {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    color: var(--text-color);
+    text-align: center; 
+    margin-left: 0; /* Remove the left margin */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Weekly Cards */
+.cards-container {
+    display: flex;
+    max-width: 885px;
+    gap: 1rem;
+    margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Align cards to right */
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    border-radius: 5px;
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-icon {
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 1rem;
+    animation: popIn 0.5s ease-out;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.dashboard-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* allows wrapping on smaller screens */
+}
+
+/* Animation */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* Calendar */
+.calendar-container {
+    background-color: var(--chart-bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    
+    /* Responsive Sizing */
+    width: 100%;               /* Scales based on window width */
+    max-width: 500px;         /* Prevents it from becoming too wide */
+    height: auto;             /* Adjust height automatically to fit content */
+    max-height: 90vh;         /* Optional: Limits height to 90% of viewport */
+    min-height: 20vh;
+    /* Center it */
+    margin: 0 auto;
+
+    /* For overflow if needed */
+    overflow-y: auto;
+
+    /* Box shadow for subtle elevation */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* .calendar-icon {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 1.5rem;
+} */
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.month-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-nav-btn {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(237, 233, 233, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-color: transparent;
+
+}
+
+.date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.date.workout {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.date.today {
+    border: 2px solid var(--accent-color);
+}
+
+/* Weight Change Chart */
+.weight-change-container {
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 3px #5189FC solid;
+    background-color: rgba(33, 105, 229, 0.200);
+}
+
+.weight-change-container canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+
+.weight-change-container h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.reminders-container {
+    background-color: var(--chart-bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    
+    /* Responsive Sizing */
+    width: 100%;               /* Scales based on window width */
+    max-width: 500px;         /* Prevents it from becoming too wide */
+    height: auto;             /* Adjust height automatically to fit content */
+    max-height: 90vh;         /* Optional: Limits height to 90% of viewport */
+    min-width: px;
+    min-height: 20vh;
+    /* Center it */
+    margin: 0 auto;
+
+    /* For overflow if needed */
+    overflow-y: auto;
+
+    /* Box shadow for subtle elevation */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}   
+
+.reminders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.add-reminder {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    /* Reset button styles */
+    border: none;
+    padding: 0;
+    outline: none;
+    font: inherit;
+}
+
+.add-reminder:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.reminders-list {
+    margin-bottom: 1rem;
+}
+
+.reminder-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.reminder-time {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.add-reminder-form {
+    display: none;
+    margin-top: 1rem;
+    z-index: 100; /* Ensure it's above other content */
+    background-color: #2a2a3a; /* Example background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.add-reminder-form.show {
+    display: block;
+}
+
+.add-reminder-form input {
+    display: block; /* Stack inputs */
+    margin-bottom: 10px;
+    padding: 8px;
+    width: calc(100% - 16px); /* Account for padding */
+    border: 1px solid #555;
+    background-color: #3a3a4a;
+    color: white;
+    border-radius: 4px;
+}
+
+.add-reminder-form button {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.add-reminder-form button#saveReminder,
+.bmi-form button#saveBmi {
+    background-color: #4aa5e3; /* Blue */
+    color: white;
+}
+
+.add-reminder-form button#cancelReminder {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Styles for the delete reminder button */
+.reminder-item .delete-reminder {
+    background: none;
+    border: none;
+    color: #f44336; /* Red */
+    cursor: pointer;
+    padding: 0 5px;
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.reminder-item .delete-reminder i {
+    pointer-events: none; /* Clicks on icon pass through to button */
+}
+/* Step Counts Chart */
+.step-counts-container {
+    background-color: var(--chart-bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 3px #5189FC solid;
+    background-color: #2169E5;
+    border-radius: 10px;
+    background-color: rgba(33, 105, 229, 0.200);
+}
+
+.step-counts-container h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* BMI */
+.bmi-container {
+    background-color: var(--chart-bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    
+    /* Responsive Sizing */
+    width: 100%;               /* Scales based on window width */
+    max-width: 500px;         /* Prevents it from becoming too wide */
+    height: auto;             /* Adjust height automatically to fit content */
+    max-height: 90vh;         /* Optional: Limits height to 90% of viewport */
+    min-width: px;
+    min-height: 20vh;
+    /* Center it */
+    margin: 0 auto;
+
+    /* For overflow if needed */
+    overflow-y: auto;
+
+    /* Box shadow for subtle elevation */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.bmi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.edit-bmi {
+    cursor: pointer;
+}
+
+.bmi-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.bmi-metrics p {
+    margin-bottom: 0.5rem;
+}
+
+.bmi-chart-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.bmi-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.bmi-form {
+    display: none;
+     z-index: 100; /* Ensure it's above other content */
+     background-color: #2a2a3a; /* Example background */
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.bmi-form.show {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 0.75rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.form-group input {
+    /* width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: none; */
+    display: block; /* Stack inputs */
+    margin-bottom: 10px;
+    padding: 8px;
+    width: calc(100% - 16px); /* Account for padding */
+    border: 1px solid #555;
+    background-color: #3a3a4a;
+    color: white;
+}
+
+.bmi-form-buttons {
+    /* display: flex;
+    gap: 0.5rem; */
+    padding: 8px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.bmi-form-buttons button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.bmi-form-buttons button#saveBmi {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.bmi-form-buttons button#cancelBmi {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-color);
+}
+
+/* Active Time Chart */
+.active-time-container {
+    background-color: var(--chart-bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 3px #5189FC solid;
+    background-color: #2169E5;
+    border-radius: 10px;
+    background-color: rgba(33, 105, 229, 0.200);
+}
+
+.active-time-container h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    
+    .cards-container {
+        justify-content: center;
+        margin: 0 auto; /* centers the container */
+        padding: 0 1rem; /* adds equal spacing on both sides */
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 300px;
+    }
+    
+    .mobile-menu {
+        display: block;
+    }
+}
