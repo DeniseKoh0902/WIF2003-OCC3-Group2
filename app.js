@@ -58,6 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.toggle("fa-eye-slash");
     });
   }
+  // Redirect to index.html on login
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form from submitting normally
+    // You can add validation here if needed
+    window.location.href = "index.html";
+  });
 });
 
 // Navigation highlighting

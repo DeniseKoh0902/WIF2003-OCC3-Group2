@@ -1,5 +1,5 @@
-//for testing
-// TEMP: Insert mock workout data into localStorage for testing
+// // for testing
+// // TEMP: Insert mock workout data into localStorage for testing
 // if (!localStorage.getItem("workoutHistory")) {
 //   const sampleWorkouts = [
 //     {
@@ -20,7 +20,7 @@
 //       calories: 400,
 //       description:
 //         "Cycling is a low-impact aerobic exercise that improves cardiovascular health, strengthens leg muscles, and enhances joint mobility. It’s great for endurance and weight management, whether done outdoors or on a stationary bike.",
-//       datetime: "2025-05-03 18:20",
+//       datetime: "2025-05-04 18:20",
 //     },
 //   ];
 //   localStorage.setItem("workoutHistory", JSON.stringify(sampleWorkouts));
