@@ -200,6 +200,32 @@ footer section.copyright{
     overflow-y: auto;
     font-weight: lighter;
 }
+/* added badge styling */
+.notification-badge {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  background-color: #ff0000; 
+  color: white; 
+  font-size: 0.7rem; 
+  font-weight: bold;
+  padding: 2px 5px; 
+  border-radius: 50%; 
+  min-width: 18px;
+  text-align: center; 
+  line-height: 1; 
+  transform: translate(50%, -50%); 
+  z-index: 10; 
+  display: none; 
+  box-sizing: border-box; 
+}
+
+/* adjust slightly if padding exists */
+.notification-bell .notification-badge {
+  top: 5px;
+  right: 5px;
+  transform: translate(50%, -50%);
+}
 
 /* RESPONSIVE DESIGN */
 @media screen and (max-width: 700px) {
