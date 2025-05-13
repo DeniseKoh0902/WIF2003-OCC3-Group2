@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --black:#141414;
+    --dark-blue:#082b4b;
+    --middle-blue:#5E7FB7;
+    --light-blue:#5189fc;
+    --dark-green:#3F876F;
+    --light-green:#6fcfb3;
+    --red:#FC6551;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.profile-header {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.profile-pic {
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%;
+  border: 4px solid var(--light-blue);
+  object-fit: cover;
+  margin-bottom: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+.profile-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.btn {
+  background-color: var(--middle-blue); 
+  color: white;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--light-blue); 
+  transform: scale(1.05); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.btn:focus, .btn:active {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(81, 137, 252, 0.5); 
+}
+
+.profile-stats {
+  display: flex;
+  gap: 20px;
+  padding: 0 40px;
+  margin-bottom: 40px;
+}
+
+.profile-stats .stat-card {
+  flex: 1 1 200px;
+  background-color: var(--dark-blue);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 10px;
+}
+
+.profile-stats .stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-stats .stat-card img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.profile-stats .stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.profile-stats .stat-subtext {
+  font-size: 0.9rem;
+  color: var(--light-green);
+}
+
+.profile-stats .stat-card h3 {
+  color: var(--white);
+  margin: 0;
+  font-weight: bold;
+}
+
+.profile-stats .stat-card p {
+  color: var(--light-green);
+  margin: 0;
+}
+
+.profile-info-section {
+  display: flex;
+  gap: 40px;
+  padding: 0 40px 40px;
+}
+
+.personal-info,
+.account-settings {
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
+  color: var(--white);
+}
+
+.personal-info h3,
+.account-settings h3 {
+  color: var(--white);
+  margin-bottom: 15px;
+}
+
+.personal-info input {
+  color: white; 
+  background-color: transparent; 
+  border: 1px solid #63E6BE;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.personal-info label,
+.account-settings label {
+  color: var(--light-green);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.personal-info input,
+.account-settings input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #63E6BE;
+  background-color: #67988826;
+  color: var(--white);
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.delete-account {
+  margin-top: 30px;
+  border: 1px solid var(--red);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.delete-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+
+.delete-header img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.delete-warning {
+  color: var(--white);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  background-color: var(--red); 
+  color: white;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #f44d37; 
+  transform: scale(1.05); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.delete-btn:focus, .delete-btn:active {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(252, 101, 81, 0.5); 
+}
+
+.profile-stats .stat-card h3 {
+  margin-bottom: 5px;
+}
+
+.modal-content {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  border-radius: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--middle-blue);
+}
+
+.modal-title {
+  font-weight: bold;
+  color: var(--light-green);
+}
+
+.modal-body p {
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.modal-footer .btn-danger {
+  background-color: var(--red);
+  border: none;
+}
+
+.modal-footer .btn-secondary {
+  background-color: var(--light-blue);
+  border: none;
+}

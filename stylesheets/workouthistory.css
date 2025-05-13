@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --black:#141414;
+    --dark-blue:#051c2e;
+    --middle-blue:#5E7FB7;
+    --light-blue:#5189fc;
+    --dark-green:#3F876F;
+    --light-green:#6fcfb3;
+    --yellow:#e4fda9;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+a {
+  text-decoration: none;
+}
+
+.workout-main {
+  width: 100vw;
+  height : 90vh;
+  background-image: url('./images/workout/main_workout.jpg');
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.workout-main .content {
+  margin-bottom: 150px;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.workout-main .content h2 {
+  font-family: "Montserrat",'Times New Roman', Times, serif;
+  font-size: 4vmin;
+  margin-top: 500px;
+}
+
+.workout-plan h2{
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-weight: bold;
+  font-size: 4vmin;
+  margin: 50px;
+  margin-bottom: 0;
+}
+
+.workout-card {
+  cursor:pointer;
+  background-color: #5E7FB726;/* 26 is ~15% opacity in hex */
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--light-blue);
+  transition: background 0.3s;
+  margin: 30px;
+  color: white; 
+}
+
+.workout-card:hover {
+  background-color: #1f4a6e;
+}
+
+.workout-card img {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.workout-card h3 {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: white;
+}
+
+.workout-card p {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  font-size: 14px;
+  color: rgb(156, 200, 228);
+}
+
+#manual-workout {
+  scroll-margin-top: 150px; /* Adjust this based on your navbar height */
+}
+
+/* for workout plan */
+#workout-header {
+  font-family: "Montserrat", sans-serif;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 20px;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+#workout-header button {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
+.header-top-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-top-row button {
+  background-color: var(--middle-blue);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header-top-row h2 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+}
+
+.header-info-row {
+  margin-left: 105px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #6fcfb3;
+}
+
+.timer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white; /* or black with opacity */
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-workout-btn {
+  display: block;
+  margin: 2rem auto; /* top-bottom margin and auto for left-right centering */
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.timer-content{
+  background:white; 
+  padding:30px; 
+  border-radius:20px; 
+  text-align:center; 
+  max-width:500px; 
+  width:90%; 
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: popIn 0.3s ease-out;
+}
+
+.timer-container {
+    font-family: "Montserrat", 'Times New Roman', Times, serif;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    animation: popIn 0.3s ease-out;
+    z-index: 1001;
+}
+
+.timer-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    z-index: 1000;
+}
+/* Timer digits */
+#timer {
+  font-size: 3rem;
+  margin: 20px 0;
+  color: black;
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.timer-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 0.5rem;
+}
+.timer-button:hover {
+    background-color: #357ab8;
+}
+
+.timer-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
