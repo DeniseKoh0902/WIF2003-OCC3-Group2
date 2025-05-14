@@ -26,39 +26,6 @@
 //   localStorage.setItem("workoutHistory", JSON.stringify(sampleWorkouts));
 // }
 
-// ✅ 2. Then run your rendering code as usual
-// Make sure the rest of your code (the DOMContentLoaded listener that renders the workout cards) comes after this block.
-
-// ✅ 3. To reset and test again
-// Open browser dev tools > Application > Local Storage > clear the workoutHistory key to re-trigger the mock insert.
-
-
-
-// function saveWorkoutToHistory(workout) {
-//   const existingHistory =
-//     JSON.parse(localStorage.getItem("workoutHistory")) || [];
-
-//   // Add current datetime
-//   const now = new Date();
-//   const formattedDate = now.toLocaleString("en-GB"); // e.g., "03/05/2025, 18:20:00"
-
-//   const workoutEntry = {
-//     ...workout,
-//     datetime: formattedDate,
-//   };
-
-//   existingHistory.push(workoutEntry);
-//   localStorage.setItem("workoutHistory", JSON.stringify(existingHistory));
-// }
-
-// // Example usage
-// saveWorkoutToHistory({
-//   name: "Abs Workout",
-//   description: "Flatten your belly with quick and easy ab moves",
-//   icon: "./images/workout/workout-plans-category/abs.png",
-//   duration: "15 min",
-//   calories: "100 kcal",
-// });
 
 document.addEventListener("DOMContentLoaded", function () {
   const historyContainer = document.getElementById("workout-history");
