@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     navLinks.classList.toggle("nav_active");
     logoutButton.classList.toggle("nav_active");
 
-    // Optional: Close menu when clicking outside
+    //Close menu when clicking outside
     document.addEventListener("click", function closeMenu(e) {
       if (!e.target.closest("header")) {
         navLinks.classList.remove("nav_active");
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       passwordInput.type = isHidden ? "text" : "password";
 
-      // Optional: display actual password value when revealed
+      //display actual password value when revealed
       if (isHidden) {
         passwordInput.value = "abcdefg";
       }
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent form from submitting normally
-    // You can add validation here if needed
+  
     window.location.href = "index.html";
   });
 });
