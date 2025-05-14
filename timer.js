@@ -59,11 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
             exerciseName;
           document.getElementById("custom-alert").style.display = "flex";
 
-          // Optional auto-redirect after 5 seconds
-          // setTimeout(() => {
-          //   window.location.href = "workout.html#manual-workout";
-          // }, 5000);
-
           resetTimer();
         }
       }
