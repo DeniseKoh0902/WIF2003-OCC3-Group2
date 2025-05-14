@@ -172,7 +172,7 @@ const handleDayClick = (day, month, year) => {
 };
 
 // Add a workout for a specific date (Adds the day number to workoutDays)
-// NOTE: This modifies the global workoutDays array and doesn't handle different months.
+// This modifies the global workoutDays array and doesn't handle different months.
 const addWorkout = (dateString) => {
     const day = parseInt(dateString.split('-')[2], 10); // Ensure base 10
     // Check if the day number is already in the array
@@ -186,7 +186,7 @@ const addWorkout = (dateString) => {
 };
 
 // Remove a workout for a specific date (Removes the day number from workoutDays)
-// NOTE: This modifies the global workoutDays array and doesn't handle different months.
+// This modifies the global workoutDays array and doesn't handle different months.
 const removeWorkout = (dateString) => {
     const day = parseInt(dateString.split('-')[2], 10); // Ensure base 10
     const index = workoutDays.indexOf(day);
