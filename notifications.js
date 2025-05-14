@@ -70,13 +70,13 @@ function renderNotificationsList() {
     noNotificationsItem.textContent = "No new notifications.";
     notificationListEl.appendChild(noNotificationsItem);
   } else {
-    // Optional: Sort active notifications by time if needed (they are added when due, but sorting might be nice)
+    // Sort active notifications by time if needed (they are added when due, but sorting might be nice)
     activeNotifications.sort((a, b) => a.time.localeCompare(b.time)); // Assuming time is HH:MM
 
     activeNotifications.forEach((notification) => {
       const notificationItem = document.createElement("div");
       notificationItem.classList.add("notification-item"); // Use a class for styling
-      // Add data attributes if needed, e.g., to handle clicking on a notification
+      // Add data attributes if needed, for here to handle clicking on a notification
       notificationItem.dataset.id = notification.id;
 
       notificationItem.innerHTML = `
