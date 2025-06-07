@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #051c2e;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  
+}
+
+li, a, button{
+  font-family: "Montserrat",'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.logout-btn {
+  background-color: #5E7FB7;
+  color: white !important; 
+  padding: 10px 20px;
+  border-radius: 999px; 
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid #ccc; /* optional: adds a soft border */
+}
+
+.logout-btn:hover {
+  background-color: #4a6b99; /* keep it the same if you don't want a change */
+  color: white !important;
+}
+
+.login-btn {
+  background-color: #5E7FB7;
+  color: white !important; 
+  padding: 10px 20px;
+  border-radius: 999px; 
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid #ccc; /* optional: adds a soft border */
+}
+
+.login-btn:hover {
+  background-color: #4a6b99; /* keep it the same if you don't want a change */
+  color: white !important;
+}
+
+header{
+  background-color: #051c2e;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.logo{
+  cursor:pointer;
+  flex: 2 1 400px;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+.logo img{
+  width: 18vw;
+  height: 6vw;
+}
+
+.nav_links {
+  list-style: none;
+}
+
+.nav_links li{
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav_links li a{
+  transition:all 0.3s ease 0s;
+  padding-top: 0.3rem;
+}
+
+.nav_links li a:hover{
+  color: #5E7FB7;
+  border-bottom: 3px solid #5E7FB7;
+}
+
+/* Active Page Styling (Same as Hover) */
+.nav_links li a.active {
+  color: #5E7FB7;
+  border-bottom: 3px solid #5E7FB7;
+}
+
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #edf0f1;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 11;
+}
+
+p {
+  color: #edf0f1;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5; /* Optional: Control line spacing */
+}
+
+body footer {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  align-items: center;
+  background-color:#051c2e;
+  margin-top: auto;
+}
+
+body footer section.links {
+  margin-top: 2rem;
+}
+
+body footer section.links a img {
+  width: 5vh;
+  margin: 0rem 1rem;
+}
+
+.footerlogo img {
+  width: 200px; 
+  height: auto; 
+  margin: 0;    
+}
+
+footer section.copyright{
+  font-size: small; 
+  font-style: italic; 
+  text-align: center; 
+  padding-top: 10px; 
+}
+
+.notification-bell {
+    position: relative;
+    padding: 0px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #edf0f1;
+    display: inline-block;
+}
+
+.notification-bell i {
+    color: #edf0f1;
+    transition: color 0.3s ease;
+}
+
+.notification-bell:hover i {
+    color: #5E7FB7;
+}
+
+/* Notification panel styles */
+.notification-panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #1c2f45;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.notification-panel.show {
+    display: block;
+}
+
+.notification-header {
+    padding: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid #ccc;
+}
+
+.notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+    font-weight: lighter;
+}
+/* added badge styling */
+.notification-badge {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  background-color: #ff0000; 
+  color: white; 
+  font-size: 0.7rem; 
+  font-weight: bold;
+  padding: 2px 5px; 
+  border-radius: 50%; 
+  min-width: 18px;
+  text-align: center; 
+  line-height: 1; 
+  transform: translate(50%, -50%); 
+  z-index: 10; 
+  display: none; 
+  box-sizing: border-box; 
+}
+
+/* adjust slightly if padding exists */
+.notification-bell .notification-badge {
+  top: 5px;
+  right: 5px;
+  transform: translate(50%, -50%);
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 700px) {
+    .nav_links {
+        display: none;
+        flex-direction: column;
+        background-color: #051c2e;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: left;
+        padding: 1rem 0;
+        z-index: 10;
+        transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger on small screens */
+    }
+
+    /* SHOW MENU WHEN ACTIVE */
+    .nav_active {
+      display: flex;
+  }
+
+}
+
+
+.back-btn:hover{
+    color: var(--light-blue);
+    text-decoration: underline;
+}
+
+.back-btn{
+    margin: 20px;
+}

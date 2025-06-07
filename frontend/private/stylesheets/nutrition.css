@@ -1,0 +1,528 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --black:#141414;
+    --dark-blue:#051c2e;
+    --middle-blue:#5E7FB7;
+    --light-blue:#5189fc;
+    --dark-green:#3F876F;
+    --light-green:#6fcfb3;
+    --medium-green:#8FAF43;
+    --yellow:#e4fda9;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+a {
+  text-decoration: none;
+}
+
+.nutrition-main {
+  width: 100vw;
+  height : 90vh;
+  background-image: url('../images/nutrition/main_nutrition.jpg');
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.nutrition-main .content {
+  margin-bottom: 150px;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.nutrition-main .content h2 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 4vmin;
+}
+
+.nutrition-main .line {
+  width: 150px;
+  height: 4px;
+  background: #5E7FB7;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.nutrition-main .content h1{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 7vmin;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.nutrition-main .ctn {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 8px 15px;
+  background: #5E7FB7;
+  border-radius: 10px;
+  color:whitesmoke;
+}
+
+/* about */
+
+.nutrition-about{
+    padding: 5rem 9%;
+}
+
+.heading{
+  margin-top: 3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 4rem;
+    font-size: 4rem;
+}
+
+.nutrition-about .row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nutrition-about .row .content{
+    flex: 1 1 35rem;
+}
+
+.nutrition-about .row .content h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.nutrition-about .row .content p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.3rem;
+    color:#cbd2d5;
+    padding: 2rem 0;
+    line-height: 2;
+}
+
+.nutrition-about .row .image{
+    flex: 1 1 40rem;
+}
+
+.nutrition-about .row .image img{
+    width: 75%;
+}
+
+
+/* diet */
+
+.nutrition-diet h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.search-bar-container {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+#meal-search {
+  width: 80%;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 2px solid var(--light-blue);
+  outline: none;
+  font-family: 'Lucida Sans', sans-serif;
+}
+
+
+.nutrition-diet .controls{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  align-items: center;
+}
+
+.nutrition-diet .controls .buttons{
+  padding: 1rem 1rem;
+  background: var(--middle-blue);
+  cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,0.1);
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.nutrition-diet .controls .buttons .img{
+  height: 8rem
+}
+
+.nutrition-diet .controls .buttons h5{
+  font-size: 1.3rem;
+  padding-top: 1rem;
+  color: var(--black);
+}
+
+.nutrition-diet .controls .buttons.active{
+  background: var(--light-blue);
+}
+
+.nutrition-diet .image-container{
+  margin-left: 5rem;
+  margin-right: 5rem;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.nutrition-diet .image-container .box{
+  background: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.nutrition-diet .image-container .box:hover .image img{
+  transform: scale(1.1);
+}
+
+.nutrition-diet .image-container .box .image{
+  height: 25rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.nutrition-diet .image-container .box .image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.nutrition-diet .image-container .box .content{
+  padding: 2rem;
+}
+
+.nutrition-diet .image-container .box .content .link{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--dark-green);
+}
+
+.nutrition-diet .image-container .box .content .link:hover{
+  color: var(--light-green);
+}
+
+.nutrition-diet .image-container .box .content p{
+  font-size: 1.3rem;
+  color: var(--light-blue);
+}
+
+.nutrition-diet .image-container .box .content .calories-favorite {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.nutrition-diet .image-container .box .content .calories-favorite h6 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--medium-green);
+}
+
+.nutrition-diet .image-container .box .content .calories-favorite .icon a {
+  font-size: 2rem; 
+  -webkit-text-stroke: 2px black;
+  color: var(--white); 
+}
+
+.fa-heart.active {
+  color: red !important;
+}
+
+.fa-fast-spin {
+  animation-duration: 0.5s !important;
+}
+
+.favourite-button {
+  text-align: right;
+}
+
+.favourite-button .ctn {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 10px 30px;
+  background: var(--middle-blue);
+  border-radius: 10px;
+  color:var(--black);
+  margin-right: 5rem;
+  align-content:  right;
+}
+
+.favourite-button .ctn:hover {
+  background: var(--light-blue);
+}
+
+.notification {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--light-blue);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 1001;
+  opacity: 0;
+  transition: all 0.3s ease;
+  font-family: 'Lucida Sans', sans-serif;
+}
+
+.notification.show {
+  bottom: 30px;
+  opacity: 1;
+}
+
+.icon a i {
+  color: var(--white);
+  transition: color 0.3s ease;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.icon a.active i {
+  color: red;
+  -webkit-text-stroke: 0; /* Remove stroke if active */
+}
+
+
+/* modal */
+
+.foodmodal {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 1rem;
+  margin: auto;
+  max-width: 700px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.456);
+  animation: fadeInModal 0.4s ease;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.close:hover {
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  text-align: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.modal-header h2 {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-green);
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-image {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-image img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-details section h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--middle-blue);
+}
+
+#modalIngredients, #modalSteps {
+  list-style-position: inside;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: black;
+  padding-left: 0;
+}
+
+#modalIngredients li, #modalSteps li {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .modal-image img {
+    max-width: 300px;
+  }
+  .modal-details {
+    flex: 1;
+  }
+}
+
+/* Favourite Meals */
+.nutrition-diet .calorie-heading {
+  color: #E4FDA9; /* or any color like red, blue, #ff6600, etc. */
+}
+
+.remove-all-container {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.remove-btn {
+  background-color: var(--dark-green);
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+  background-color: var(--light-green);
+}
+
+/* sticky button */
+
+.scroll-nav-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scroll-nav-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--middle-blue);
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.scroll-nav-buttons a:hover {
+  background-color: var(--light-blue);
+  transform: scale(1.1);
+}
+
+.scroll-nav-buttons i {
+  font-size: 1.5rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--middle-blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--light-blue);
+  transform: scale(1.1);
+}
+
+.back-to-top i {
+  font-size: 1.5rem;
+}
+
