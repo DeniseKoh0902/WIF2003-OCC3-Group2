@@ -1,0 +1,29 @@
+const cron = require('node-cron');
+const mongoose = require('mongoose');
+const DailyGoal = require('./models/dailyGoal'); // path to your model
+
+mongoose.connect('mongodb+srv://admin:admin@cluster0.9rhvdoc.mongodb.net/crud', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected for daily reset job'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+//run every day at midnight
+cron.schedule('0 0 * * *', async () => {
+  console.log('Running daily reset of progress fields...');
+
+  try {
+    const result = await DailyGoal.updateMany({}, {
+      $set: {
+        total_steps: 0,
+        total_calories_burned: 0,
+        total_time: 0,
+        total_water_intake: 0,
+      }
+    });
+    console.log(`Daily progress reset for ${result.modifiedCount} users`);
+  } catch (err) {
+    console.error('Error resetting daily progress:', err);
+  }
+});

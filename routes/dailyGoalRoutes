@@ -1,0 +1,108 @@
+const express = require('express');
+const router = express.Router();
+const authMiddleware = require('../middleware/authMiddleware');
+const DailyGoal = require('../models/dailyGoal.js');
+const { body, validationResult } = require('express-validator');
+
+// Field name mapping helper
+const getGoalFieldName = (statType) => {
+  const fieldMap = {
+    steps: 'steps_goal',
+    calories: 'calories_burned_goal',
+    minutes: 'time_goal',
+    water: 'water_intake_goal'
+  };
+  return fieldMap[statType];
+};
+
+// Current progress field name mapping helper
+function getCurrentFieldName(statType) {
+  const fieldMap = {
+    steps: 'total_steps',
+    calories: 'total_calories_burned',
+    minutes: 'total_time',
+    water: 'total_water_intake'
+  };
+  return fieldMap[statType];
+}
+
+// GET daily goals for authenticated user
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const goals = await DailyGoal.findById(req.user.id)
+      .select('-_id -createdAt -updatedAt -__v') // Exclude unnecessary fields
+      .lean();
+
+    if (!goals) {
+      return res.status(404).json({ 
+        message: 'No goals found. Default goals will be created on first update.' 
+      });
+    }
+
+    res.json(goals);
+  } catch (err) {
+    console.error('Error fetching daily goals:', err);
+    res.status(500).json({ 
+      error: 'Server error while fetching goals',
+      details: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
+  }
+});
+
+// UPDATE daily goal with validation
+router.put('/', 
+  authMiddleware,
+  [
+    body('statType').isIn(['steps', 'calories', 'minutes', 'water']),
+    body('newGoal').isInt({ min: 1 }),
+    body('currentProgress').optional().isFloat({ min: 0 })
+  ],
+  async (req, res) => {
+    try {
+      // Validate request
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
+      const { statType, newGoal, currentProgress } = req.body;
+      const updateField = getGoalFieldName(statType);
+      const currentField = getCurrentFieldName(statType);
+      
+      // Prepare update object
+      const updateObj = { [updateField]: newGoal };
+      if (currentProgress !== undefined) {
+        updateObj[currentField] = currentProgress;
+      }
+
+      // Update or create document
+      const updated = await DailyGoal.findByIdAndUpdate(
+        req.user.id,
+        updateObj,
+        { 
+          new: true,
+          upsert: true,
+          setDefaultsOnInsert: true,
+          select: '-_id -createdAt -updatedAt -__v'
+        }
+      );
+
+      res.json({
+        message: 'Goal updated successfully',
+        updatedField: statType,
+        newValue: newGoal,
+        currentProgress: currentProgress,
+        goals: updated
+      });
+
+    } catch (err) {
+      console.error('Error updating daily goal:', err);
+      res.status(500).json({ 
+        error: 'Server error while updating goal',
+        details: process.env.NODE_ENV === 'development' ? err.message : undefined
+      });
+    }
+  }
+);
+
+module.exports = router;

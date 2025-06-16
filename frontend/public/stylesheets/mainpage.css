@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Coiny&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-caption {
+  bottom: 220px;
+  z-index: 2;
+}
+
+.carousel-caption h5 {
+  font-size: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 25px;
+  font-weight: 600;
+}
+
+.carousel-caption p {
+  width: 60%;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.carousel-inner::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.btn-primary {
+  background-color: #5E7FB7;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.flip-card-front i.bi {
+  font-size: 3rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 350px;
+  height: 350px;
+  perspective: 1000px;
+  margin: 20px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+}
+
+.flip-card-front {
+  background-image: linear-gradient(to bottom, #5189Ac, #e0e0e0);
+  color: #000000;
+}
+
+.flip-card-back {
+  background-image: linear-gradient(to bottom, #6FCFC3, #e0e0e0);
+  color: #000000;
+  transform: rotateY(180deg);
+}
+
+.card-title,
+.flip-card .lead {
+  color: #000000;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.flip-card .lead {
+  color: #000000;
+}
+
+.card-title,
+.card .lead {
+  color: #000000; 
+}
+
+.card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 10px;
+  height: 500px;
+  background: #ffffff;
+  box-shadow: 5px 10px 5px #5189Ac;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 5px 10px 5px #5189Ac;
+  z-index: 1;
+}
+
+.card-body {
+  padding: 1.5rem;
+  color: #051c2e;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  color: #000000;
+  position: relative;
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  height: 3px;
+  background-image: linear-gradient(to right, #5189Ac, #AF4671);
+  transition: width 0.3s ease;
+}
+
+.card:hover .card-title::after {
+  width: 100%;
+}
+
+.card-text,
+.list-job {
+  font-size: 1.0rem;
+  color: #000000;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-body img,
+.coach-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.coach-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1.5rem;
+}
+
+.coach-row .col-12 {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 80%;
+  max-width: 300px;
+  margin-right: 1.2rem;
+}
+
+.coach-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.coach-row::-webkit-scrollbar-thumb {
+  background-color: #5E9CD3;
+  border-radius: 10px;
+}
+
+.coach-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.row {
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .flip-card {
+    width: 90%;
+    max-width: 350px;
+    min-height: 350px;
+    height: 90%;
+    margin: 20px auto;
+  }
+}
+
+#about{
+  scroll-margin-top: 100px; /* Adjust this based on your navbar height */
+}
+#services{
+  scroll-margin-top: 100px; /* Adjust this based on your navbar height */
+}
+#team{
+  scroll-margin-top: 100px; /* Adjust this based on your navbar height */
+}
