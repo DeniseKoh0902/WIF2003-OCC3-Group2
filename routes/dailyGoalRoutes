@@ -19,8 +19,6 @@ const getGoalFieldName = (statType) => {
 function getCurrentFieldName(statType) {
   const fieldMap = {
     steps: 'total_steps',
-    calories: 'total_calories_burned',
-    minutes: 'total_time',
     water: 'total_water_intake'
   };
   return fieldMap[statType];
