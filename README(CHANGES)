@@ -1,0 +1,20 @@
+Changes made to file
+1. progress.js
+2. bmi.js
+3. calendar.js
+4. charts.js
+5. reminder.js
+
+added new models
+1. Progress.js
+2. Reminder.js
+3. Weights.js
+
+added new seeds ( just use mongodb instead of seed ) -- hardcode data
+1. insertProgress
+2. insertWeights
+3. insertReminders
+
+I have edited the following files
+1. .env ( to my own mongodb link )
+2. workouthistory.js 
