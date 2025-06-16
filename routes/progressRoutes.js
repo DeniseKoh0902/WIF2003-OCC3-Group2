@@ -136,10 +136,7 @@ router.get('/latest', authMiddleware, async (req, res) => {
                 weight: 0,
                 height: 0,
                 age: 0,
-                bmi: 0,
-                steps: 0,
-                calories: 0,
-                active_time: 0
+                bmi: 0
             });
         }
         res.json(latestProgress);
@@ -156,7 +153,7 @@ router.post('/', authMiddleware, async (req, res) => {
         return res.status(401).json({ message: 'User not authenticated.' });
     }
 
-    const { weight, height, age, steps = 0, calories = 0, active_time = 0, date_recorded } = req.body;
+    const { weight, height, age, date_recorded } = req.body;
 
     if (!weight || !height) {
         return res.status(400).json({ message: 'Weight and height are required.' });
@@ -170,10 +167,7 @@ router.post('/', authMiddleware, async (req, res) => {
             { 
                 weight,
                 height,
-                age,
-                steps,
-                calories,
-                active_time
+                age
             },
             { new: true, upsert: true, setDefaultsOnInsert: true }
         );
