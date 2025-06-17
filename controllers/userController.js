@@ -3,6 +3,8 @@ const DailyGoal = require('../models/dailyGoal');
 const WorkoutHistory = require('../models/WorkoutHistory');
 const Progress = require('../models/Progress');
 const Reminder = require('../models/Reminder');
+const Weights = require('../models/Weights');
+const Workout = require('../models/Workout');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
@@ -110,26 +112,38 @@ exports.getDailyStreak = async (req, res) => {
     .sort({ workout_date: -1 })
     .lean();
 
-    const daysWithWorkouts = new Set();
-    
-    for (const entry of history) {
-      const day = moment.utc(entry.workout_date).format('YYYY-MM-DD');
-      daysWithWorkouts.add(day);
-    }
-
-    if (daysWithWorkouts.size === 0) {
-      // No workouts at all
+    // If no workout history, streak is 0
+    if (history.length === 0) {
       return res.json({ streak: 0 });
     }
 
-    // Get the most recent workout day (latest date)
-    const mostRecentDayStr = [...daysWithWorkouts].sort().reverse()[0];
-    let currentDate = moment.utc(mostRecentDayStr, 'YYYY-MM-DD');
-    
+    // Get all unique workout dates (YYYY-MM-DD format)
+    const workoutDates = [...new Set(
+      history.map(entry => moment(entry.workout_date).format('YYYY-MM-DD'))
+    )].sort().reverse();
+
     let streak = 0;
-    while (daysWithWorkouts.has(currentDate.format('YYYY-MM-DD'))) {
-      streak++;
+    let currentDate = moment().startOf('day');
+    let lastWorkoutDate = moment(workoutDates[0]).startOf('day');
+
+    // If last workout was today, start counting
+    if (currentDate.isSame(lastWorkoutDate)) {
+      streak = 1;
       currentDate.subtract(1, 'day');
+    } else {
+      // If no workout today, streak is 0
+      return res.json({ streak: 0 });
+    }
+
+    // Check consecutive days backwards
+    while (true) {
+      const dateStr = currentDate.format('YYYY-MM-DD');
+      if (workoutDates.includes(dateStr)) {
+        streak++;
+        currentDate.subtract(1, 'day');
+      } else {
+        break;
+      }
     }
 
     res.json({ streak });
@@ -142,12 +156,13 @@ exports.getDailyStreak = async (req, res) => {
 exports.deleteAccount = async (req, res) => {
   try {
     const userId = req.user.id;
-
     await Promise.all([
-      WorkoutHistory.deleteMany({ user: userId }),
-      DailyGoal.deleteMany({ user: userId }),
-      Progress.deleteMany({ user: userId }),
-      Reminder.deleteMany({ user: userId }),
+      WorkoutHistory.deleteMany({ user_id: userId }),
+      DailyGoal.deleteMany({ user_id: userId }),
+      Progress.deleteMany({ user_id: userId }),
+      Reminder.deleteMany({ user_id: userId }),
+      Weights.deleteMany({ user_id: userId }),
+      Workout.deleteMany({ user_id: userId }),
       User.findByIdAndDelete(userId)
     ]);
 
