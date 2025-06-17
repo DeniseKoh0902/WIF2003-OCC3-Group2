@@ -1,4 +1,3 @@
-// C:\Users\weiqi\Miaomiao2\index.js
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -19,9 +18,8 @@ const reminderRoutes = require('./routes/reminderRoutes');
 const progressRoutes = require('./routes/progressRoutes');
 const workoutRoutes = require('./routes/workoutRoutes');
 const weightRoutes = require('./routes/weightRoutes'); 
+const initializeDailyReset = require('./cron/dailyReset')
 const authMiddleware = require('./middleware/authMiddleware');
-
-
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
@@ -39,7 +37,15 @@ app.use(cookieParser());
 
 connectDB(); 
 
-require('./dailyReset');
+// Initialize the daily reset cron job after DB connection is established
+mongoose.connection.on('connected', () => {
+  console.log('MongoDB connected - initializing cron jobs');
+  initializeDailyReset();
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
+});
 
 app.use(express.static(path.join(__dirname, 'frontend', 'public')));
 
@@ -67,7 +73,6 @@ app.use('/api/progress', authMiddleware, progressRoutes);
 app.use('/api/reminders', authMiddleware, reminderRoutes);
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/weight', authMiddleware, weightRoutes);
-
 
 app.use('/uploads', express.static(path.join(__dirname, 'frontend', 'private', 'uploads')));
 
