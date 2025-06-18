@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema({
   },
   phonenumber: { type: String },
   birthday: { type: Date },
-  streaks: { type: Number, default: 0 },
   lastWorkoutDate:    { type: Date,   default: null },
   profile_pic: { type: String }, // store as URL or base64 string
   sign_up_date: { type: Date, default: Date.now },

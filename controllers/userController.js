@@ -7,8 +7,9 @@ const Weights = require('../models/Weights');
 const Workout = require('../models/WorkoutDays');
 const bcrypt = require('bcrypt');
 const path = require('path');
+const moment = require('moment');
 
-// // GET /api/profile
+// GET /api/profile
 exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password -passwordHistory -resetPasswordToken -resetPasswordExpires').lean();
@@ -100,9 +101,7 @@ exports.uploadAvatar = async (req, res) => {
   }
 };
 
-
-const moment = require('moment');
-
+// GET /api/profile/streak
 exports.getDailyStreak = async (req, res) => {
   try {
     const history = await WorkoutHistory.find({ 
@@ -124,23 +123,29 @@ exports.getDailyStreak = async (req, res) => {
 
     let streak = 0;
     let currentDate = moment().startOf('day');
-    let lastWorkoutDate = moment(workoutDates[0]).startOf('day');
+    let checkingDate = moment(workoutDates[0]).startOf('day'); // Start from most recent workout
 
-    // If last workout was today, start counting
-    if (currentDate.isSame(lastWorkoutDate)) {
+    // If most recent workout was today, start counting from today
+    if (currentDate.isSame(checkingDate)) {
       streak = 1;
-      currentDate.subtract(1, 'day');
-    } else {
-      // If no workout today, streak is 0
+      checkingDate.subtract(1, 'day');
+    } 
+    // If most recent workout was yesterday, start counting from yesterday
+    else if (currentDate.subtract(1, 'day').isSame(checkingDate)) {
+      streak = 1;
+      checkingDate.subtract(1, 'day');
+    }
+    // Otherwise streak remains 0
+    else {
       return res.json({ streak: 0 });
     }
 
     // Check consecutive days backwards
     while (true) {
-      const dateStr = currentDate.format('YYYY-MM-DD');
+      const dateStr = checkingDate.format('YYYY-MM-DD');
       if (workoutDates.includes(dateStr)) {
         streak++;
-        currentDate.subtract(1, 'day');
+        checkingDate.subtract(1, 'day');
       } else {
         break;
       }
@@ -149,13 +154,18 @@ exports.getDailyStreak = async (req, res) => {
     res.json({ streak });
   } catch (err) {
     console.error('Error calculating streak:', err);
-    res.status(500).json({ error: 'Error calculating streak' });
+    res.status(500).json({ 
+      error: 'Error calculating streak',
+      streak: 0 // Ensure frontend always gets a number
+    });
   }
 };
 
+//DELETE /api/profile/delete
 exports.deleteAccount = async (req, res) => {
   try {
     const userId = req.user.id;
+
     await Promise.all([
       WorkoutHistory.deleteMany({ user_id: userId }),
       DailyGoal.deleteMany({ user_id: userId }),
