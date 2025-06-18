@@ -10,13 +10,10 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 //GET weekly summary AND daily data for a user
 router.get('/steps', authMiddleware, async (req, res) => {
-    
     const userId = String(req.user.id);
-    
     if (!userId) {
         return res.status(401).json({ message: 'User not authenticated.' });
     }
-
     try {
         const goals = await DailyGoal.findById(req.user.id)
             .select('-_id -updatedAt -__v')
@@ -27,7 +24,6 @@ router.get('/steps', authMiddleware, async (req, res) => {
             message: 'No goals found. Default goals will be created on first update.' 
             });
         }
-
         res.json(goals);
         } catch (err) {
         console.error('Error fetching daily goals:', err);
@@ -118,13 +114,10 @@ router.get('/steps', authMiddleware, async (req, res) => {
 });
 
 router.get('/latest', authMiddleware, async (req, res) => {
-
     const userId = String(req.user.id);
-
     if (!userId) {
         return res.status(401).json({ message: 'User not authenticated.' });
     }
-
     try {
         const latestProgress = await Progress.findOne({ user_id: userId })
                                             .sort({ date_recorded: -1 })
