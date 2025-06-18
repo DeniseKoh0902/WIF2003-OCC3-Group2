@@ -74,7 +74,10 @@ async function fetchAndDisplayWeeklySummary() {
         throw new Error(`HTTP error! status: ${workoutHistoryResponse.status}`);
       }
 
-      const history = await workoutHistoryResponse.json();
+      let history = await workoutHistoryResponse.json();
+      //sorting logic date
+      history.sort((a, b) => new Date(a.workout_date) - new Date(b.workout_date));
+
       console.log("Raw workout history:", history)
 
       // Step response
