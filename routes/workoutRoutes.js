@@ -1,7 +1,7 @@
 // routes/workoutRoutes.js
 const express = require('express');
 const router = express.Router();
-const Workout = require('../models/Workout'); // Import the new Workout model
+const Workout = require('../models/WorkoutDays'); // Import the new Workout model
 
 const authMiddleware = require('../middleware/authMiddleware');
 

@@ -71,7 +71,7 @@ app.use("/api/workout-history", workoutHistoryRoutes);
 app.use('/api/daily-goals', dailyGoalRoutes);
 app.use('/api/progress', authMiddleware, progressRoutes);
 app.use('/api/reminders', authMiddleware, reminderRoutes);
-app.use('/api/workouts', workoutRoutes);
+app.use('/api/WorkoutDays', workoutRoutes);
 app.use('/api/weight', authMiddleware, weightRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'frontend', 'private', 'uploads')));

@@ -26,7 +26,7 @@ const cacheDOM = () => {
 async function fetchWorkoutsForCurrentMonth() {
     console.log(`Fetching workouts for ${currentYear}-${currentMonth + 1}`);
     try {
-        const response = await fetch(`/api/workouts/month/${currentYear}/${currentMonth}`);
+        const response = await fetch(`/api/WorkoutDays/month/${currentYear}/${currentMonth}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -176,7 +176,7 @@ const handleDayClick = async (day, month, year) => {
  */
 const addWorkout = async (dateString) => {
     try {
-        const response = await fetch('/api/workouts', {
+        const response = await fetch('/api/WorkoutDays', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ date: dateString }),
@@ -200,7 +200,7 @@ const addWorkout = async (dateString) => {
  */
 const removeWorkout = async (dateString) => {
     try {
-        const response = await fetch(`/api/workouts/${dateString}`, {
+        const response = await fetch(`/api/WorkoutDays/${dateString}`, {
             method: 'DELETE',
         });
 

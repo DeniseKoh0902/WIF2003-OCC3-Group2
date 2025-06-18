@@ -4,7 +4,7 @@ const WorkoutHistory = require('../models/WorkoutHistory');
 const Progress = require('../models/Progress');
 const Reminder = require('../models/Reminder');
 const Weights = require('../models/Weights');
-const Workout = require('../models/Workout');
+const Workout = require('../models/WorkoutDays');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
