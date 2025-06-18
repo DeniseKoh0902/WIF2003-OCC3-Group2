@@ -12,6 +12,13 @@ const getTimeInMinute = (time) => {
     return Math.round(time / 60);
 }
 
+function getYYYYMMDD(dateInput) {
+    const date = new Date(dateInput);
+    return date.getFullYear() + '-' +
+           String(date.getMonth() + 1).padStart(2, '0') + '-' +
+           String(date.getDate()).padStart(2, '0');
+}
+
 export function initializeCharts(dailyData = [], stepsData = [], monthlyWeightData = []) {
     console.log("initializeCharts called with dailyData:", dailyData, "stepsData:", [stepsData], "and monthlyWeightData:", monthlyWeightData);
     initializeWeightChangeChart(monthlyWeightData);
@@ -317,7 +324,7 @@ function drawAnimatedBars(ctx, canvas, labels, values, maxVal, progress, color) 
 
 /**
  * Active Time Chart
- * @param {Array} dailyProgressData - Array of objects { date, steps, active_time, calories_burned }
+ * @param {Array} dailyProgressData - Array of objects { workout_date, duration } (Assuming these are the relevant fields from your backend)
  */
 function initializeActiveTimeChart(dailyProgressData) {
     const canvas = document.getElementById('activeTimeChart');
@@ -326,16 +333,63 @@ function initializeActiveTimeChart(dailyProgressData) {
         return;
     }
     const ctx = canvas.getContext('2d');
-    
+
     // Set canvas dimensions
     canvas.width = canvas.parentElement.clientWidth - 20;
     canvas.height = 300;
-    
-    // Process data for chart
-    const labels = dailyProgressData.map(d => getDayMonthLabel(d.workout_date));
-    const values = dailyProgressData.map(d => getTimeInMinute(d.duration));
 
-    // Display a message if no data
+    const aggregatedData = {};
+    dailyProgressData.forEach(d => {
+        const dateKey = getYYYYMMDD(d.workout_date);
+        const durationInMinutes = getTimeInMinute(d.duration);
+        if (aggregatedData[dateKey]) {
+            aggregatedData[dateKey] += durationInMinutes;
+        } else {
+            aggregatedData[dateKey] = durationInMinutes;
+        }
+    });
+
+    let startDate = null;
+    let endDate = null;
+
+    if (dailyProgressData.length > 0) {
+        // Find the earliest and latest dates from the original data
+        startDate = new Date(Math.min(...dailyProgressData.map(d => new Date(d.workout_date))));
+        endDate = new Date(Math.max(...dailyProgressData.map(d => new Date(d.workout_date))));
+    } else {
+        // If no data, use a default range (e.g., last 7 days from today)
+        endDate = new Date();
+        startDate = new Date();
+        startDate.setDate(endDate.getDate() - 6); // Last 7 days including today
+    }
+
+    // Adjust start and end dates to be at the beginning of the day for consistent iteration
+    startDate.setHours(0, 0, 0, 0);
+    endDate.setHours(0, 0, 0, 0);
+
+    // Second pass: Fill in missing days with 0 and create final sorted data array
+    const chartData = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+        const dateKey = getYYYYMMDD(currentDate);
+        chartData.push({
+            date: new Date(currentDate), // Keep as Date object for easier handling
+            activeTime: aggregatedData[dateKey] || 0 // Use aggregated value or 0 if no record
+        });
+        currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
+    }
+
+    chartData.sort((a, b) => a.date - b.date); // Ensure sorting for chronological display
+
+    // --- CORRECTED LINES HERE ---
+    // Process data for chart from the aggregated and filled chartData
+    const labels = chartData.map(d => getDayMonthLabel(d.date)); // Use d.date from chartData
+    const values = chartData.map(d => d.activeTime); // Use d.activeTime from chartData
+    // --- END CORRECTED LINES ---
+
+
+    // Display a message if no data (after processing, this means no recorded activity or range)
     if (values.length === 0 || values.every(v => v === 0)) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
@@ -345,27 +399,26 @@ function initializeActiveTimeChart(dailyProgressData) {
         return;
     }
 
-    const maxTime = Math.max(...values) * 1.2; 
-    const displayMaxTime = maxTime > 0 ? maxTime : 60; 
-    
+    const maxTime = Math.max(...values) * 1.2;
+    const displayMaxTime = maxTime > 0 ? maxTime : 60;
+
     const totalFrames = 60;
     let currentFrame = 0;
-    
-    // Animation loop for the active time chart
+
     function animateActiveTimeChart() {
         if (currentFrame <= totalFrames) {
             const progress = currentFrame / totalFrames;
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height); 
-            drawChartGrid(ctx, canvas, labels, 0, displayMaxTime, 'Time (min)'); 
-            
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawChartGrid(ctx, canvas, labels, 0, displayMaxTime, 'Time (min)');
+
             drawAnimatedActiveTimeLine(ctx, canvas, labels, values, displayMaxTime, progress);
-            
+
             currentFrame++;
-            requestAnimationFrame(animateActiveTimeChart); 
+            requestAnimationFrame(animateActiveTimeChart);
         }
     }
-    animateActiveTimeChart(); 
+    animateActiveTimeChart();
 }
 
 /**
