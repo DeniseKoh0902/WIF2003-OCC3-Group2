@@ -1,7 +1,6 @@
-// models/reminder.js
+
 const mongoose = require('mongoose');
 
-// Define the schema
 const reminderSchema = new mongoose.Schema({
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -12,7 +11,7 @@ const reminderSchema = new mongoose.Schema({
         required: true
     },
     time: {
-        type: String, // Storing as HH:MM string
+        type: String,
         required: true
     },
     notified: {
