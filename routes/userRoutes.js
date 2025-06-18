@@ -42,7 +42,4 @@ router.post('/api/profile/upload-avatar', authMiddleware, upload.single('avatar'
 router.get('/api/profile/streak', authMiddleware, getDailyStreak);
 router.delete('/api/profile/delete', authMiddleware, deleteAccount);
 
-
 module.exports = router;
-
-router.get('/api/profile', authMiddleware, getProfile);
