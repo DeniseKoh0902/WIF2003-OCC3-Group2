@@ -4,7 +4,7 @@ const weightChangeSchema = new mongoose.Schema({
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'User' // Assumes you have a 'User' model
+        ref: 'User'
     },
     year: {
         type: Number,
