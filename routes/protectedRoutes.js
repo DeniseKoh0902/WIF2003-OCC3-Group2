@@ -17,7 +17,6 @@ router.use((req, res, next) => {
     });
 });
 
-//Define the path to the protected static files
 const privateFilesPath = path.join(__dirname, '..', 'frontend', 'private'); 
 console.log('Serving protected static files from:', privateFilesPath); 
 router.use(express.static(privateFilesPath));
