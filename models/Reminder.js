@@ -22,8 +22,6 @@ const reminderSchema = new mongoose.Schema({
     timestamps: true
 });
 
-// Check if the model already exists before compiling it
-// This is the crucial part to prevent OverwriteModelError
 const Reminder = mongoose.models.Reminder || mongoose.model('Reminder', reminderSchema);
 
 module.exports = Reminder;
