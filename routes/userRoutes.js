@@ -14,7 +14,6 @@ const {
   deleteAccount
 } = require('../controllers/userController');
 
-// File upload config
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, './frontend/private/uploads/'),
   filename: (req, file, cb) => {

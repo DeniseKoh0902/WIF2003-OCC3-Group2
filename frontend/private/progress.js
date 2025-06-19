@@ -119,35 +119,6 @@ async function fetchAndDisplayWeeklySummary() {
           (stepsCount.total_steps || 0).toLocaleString();
       document.querySelector(".calories-card .card-value").textContent = 
           (totalCalories || 0).toFixed(0).toLocaleString(); 
-      
-        // const response = await fetch('/api/progress/weekly-summary');
-        // if (!response.ok) {
-        //     throw new Error(`HTTP error! status: ${response.status}`);
-        // }
-        // // const { summary, dailyData } = await response.json();
-
-        // // console.log("Weekly summary fetched:", summary);
-        // // console.log("Daily progress data fetched:", dailyData);
-
-        // // appData.weeklySummary = summary; 
-        // // appData.dailyProgressData = dailyData; 
-
-        // // document.querySelector(".active-time-card .card-value").textContent = 
-        // //     (summary.activeTime || 0).toLocaleString(); 
-        // // document.querySelector(".steps-card .card-value").textContent = 
-        // //     (summary.steps || 0).toLocaleString();
-        // // document.querySelector(".calories-card .card-value").textContent = 
-        // //     (summary.averageCalories || 0).toFixed(0).toLocaleString(); 
-        // const summary = await response.json();
-
-        // appData.dailyProgressData = summary;
-
-        // document.querySelector(".active-time-card .card-value").textContent = 
-        //     (summary.total_time || 0).toLocaleString(); 
-        // document.querySelector(".steps-card .card-value").textContent = 
-        //     (summary.total_steps || 0).toLocaleString();
-        // document.querySelector(".calories-card .card-value").textContent = 
-        //     (summary.total_calories_burned || 0).toFixed(0).toLocaleString(); 
             
     } catch (error) {
         console.error('Error fetching weekly summary and daily data:', error);

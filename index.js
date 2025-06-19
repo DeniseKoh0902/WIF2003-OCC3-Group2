@@ -49,8 +49,6 @@ mongoose.connection.on('error', (err) => {
 
 app.use(express.static(path.join(__dirname, 'frontend', 'public')));
 
-// Specific route to serve the reset-password.html file
-// This is needed because the email link goes to '/reset-password' (no .html extension)
 app.get('/reset-password', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'public', 'reset-password.html'));
 });

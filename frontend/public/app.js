@@ -63,18 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // --- Form Submission Handlers ---
-
-  // Handle REGISTRATION form submission
+  // Registration
   const registerForm = document.querySelector('form[action="/register"]'); // Target specific form if possible, or check inputs
   if (registerForm) {
-    // Check if this is truly the registration form by looking for a unique ID or specific inputs
     const usernameInput = registerForm.querySelector("#username");
     const emailInput = registerForm.querySelector("#email");
     const passwordInput = registerForm.querySelector("#password");
     const confirmPasswordInput = registerForm.querySelector("#confirmPassword");
 
-    // Only proceed if these inputs exist, indicating it's the registration form
     if (usernameInput && emailInput && passwordInput && confirmPasswordInput) {
       registerForm.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent default form submission
@@ -160,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Handle LOGIN form submission
+  // Login
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", (event) => {
@@ -213,7 +209,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Autocomplete for login form
     const rememberedUsername = localStorage.getItem("rememberedUsername");
     const rememberedPassword = localStorage.getItem("rememberedPassword");
 
@@ -224,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // --- Forgot Password Page Logic ---
+  // Forgot Password
   const forgotPasswordForm = document.querySelector(".form-container form"); // This targets the form within .form-container
   // We add a more robust check to ensure this is indeed the forgot password form on the correct page
   if (
@@ -234,7 +229,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const usernameInput = forgotPasswordForm.querySelector("#username");
     const emailInput = forgotPasswordForm.querySelector('input[name="email"]');
 
-    // Ensure these specific inputs exist, confirming it's the forgot password form
     if (usernameInput && emailInput) {
       forgotPasswordForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -271,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // --- Reset Password Page Logic ---
+  // Reset Password 
   const resetPasswordForm = document.getElementById("resetPasswordForm");
   // This logic only runs if the element 'resetPasswordForm' exists AND the URL starts with '/reset-password'
   if (
@@ -311,7 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
-        // *** FIX APPLIED HERE: Changed /resetpassword to /reset-password ***
         const response = await fetch(
           `http://localhost:3000/reset-password?token=${token}&id=${id}`,
           {

@@ -15,8 +15,4 @@ const workoutPlanSchema = new mongoose.Schema({
   steps: [workoutStepSchema],
 });
 
-// // Make sure this is properly exported
-// const WorkoutPlan = mongoose.model("WorkoutPlan", workoutPlanSchema);
-// module.exports = WorkoutPlan; // This must be present
-// Explicitly specify collection name
 module.exports = mongoose.model("WorkoutPlan", workoutPlanSchema, "WorkoutPlans");
