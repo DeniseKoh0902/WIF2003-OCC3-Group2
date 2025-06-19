@@ -105,8 +105,6 @@ async function loadWorkoutPlan() {
   return workout;
 }
 
-// Rest of your existing timer and event listener code remains the same...
-
 document.addEventListener("DOMContentLoaded", async function () {
   const workout = await loadWorkoutPlan();
   if (!workout) return;
