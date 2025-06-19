@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((res) => res.json())
       .then((result) => {
         console.log("Workout history saved:", result);
-        // localStorage.setItem('streakNeedsUpdate', 'true');
       })
       .catch((error) => {
         console.error("Failed to save:", error);
