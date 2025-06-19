@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Registration
   const registerForm = document.querySelector('form[action="/register"]'); // Target specific form if possible, or check inputs
   if (registerForm) {
-    // Check if this is truly the registration form by looking for a unique ID or specific inputs
     const usernameInput = registerForm.querySelector("#username");
     const emailInput = registerForm.querySelector("#email");
     const passwordInput = registerForm.querySelector("#password");
