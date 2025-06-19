@@ -34,7 +34,7 @@ const resetPasswordSchema = Joi.object({
   })
 });
 
-// REGISTER
+// Register
 exports.register = async (req, res) => {
   try {
     const { username, email, password, confirm_password } = req.body;
@@ -75,7 +75,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// LOGIN
+// Login
 exports.login = async (req, res) => {
   try {
     const { username, password, remember } = req.body;
@@ -110,7 +110,7 @@ exports.login = async (req, res) => {
   }
 };
 
-// LOGOUT
+// Log Out
 exports.logout = async (req, res) => {
   res.clearCookie('Authorization', {
     httpOnly: true,
@@ -120,7 +120,7 @@ exports.logout = async (req, res) => {
   res.status(200).json({ success: true, message: "You have successfully logged out. Have a great day!" });
 };
 
-// FORGOT PASSWORD
+// Forgot Password
 exports.forgotPassword = async (req, res) => {
   try {
     const { error } = forgotPasswordSchema.validate(req.body);
@@ -136,7 +136,7 @@ exports.forgotPassword = async (req, res) => {
 
     if (user) {
       user.resetPasswordToken = resetToken;
-      user.resetPasswordExpires = Date.now() + 3600000; // 1 hour expiration
+      user.resetPasswordExpires = Date.now() + 3600000; 
       await user.save();
 
       const resetUrl = `${process.env.BASE_URL}/reset-password?token=${resetToken}&id=${user._id}`;
@@ -153,9 +153,6 @@ exports.forgotPassword = async (req, res) => {
         `The Charmsync Team`
       );
     }
-
-    // Always return the vague message for security, regardless of whether a user was found or not.
-    // Added a random delay to prevent user enumeration attacks.
     await new Promise(resolve => setTimeout(resolve, Math.random() * 1500));
     res.status(200).json({ message: 'If an account is associated with this username and email, a password reset link has been sent to the email address.' });
 
@@ -165,7 +162,7 @@ exports.forgotPassword = async (req, res) => {
   }
 };
 
-// RESET PASSWORD
+// Reset Password
 exports.resetPassword = async (req, res) => {
   try {
     const { token, id } = req.query;
@@ -186,33 +183,25 @@ exports.resetPassword = async (req, res) => {
       return res.status(400).json({ message: 'Password reset link is invalid or expired.' });
     }
 
-    // --- NEW CHECK: Prevent setting the new password to be the same as the current active password ---
     const isSameAsCurrent = await bcrypt.compare(password, user.password);
     if (isSameAsCurrent) {
         return res.status(400).json({ message: 'Your new password cannot be the same as your current password.' });
     }
-    // --- END NEW CHECK ---
+      const passwordHistory = user.passwordHistory || []; 
 
-    // --- PASSWORD HISTORY CHECK (This logic is correct for checking against *past* passwords) ---
-    const passwordHistory = user.passwordHistory || []; // Ensure it's an array
-
-    // Check if the new password matches any previous HASHED passwords in history
     const reused = await Promise.any(
       passwordHistory.map(oldHash => bcrypt.compare(password, oldHash))
-    ).catch(() => false); // If Promise.any rejects (no matches), 'reused' becomes false
+    ).catch(() => false); 
 
     if (reused) {
       return res.status(400).json({ message: 'Your new password cannot be one of your recently used passwords.' });
     }
 
-    // --- CORRECTED: POPULATE passwordHistory with the *current* password's hash ---
-    // 'user.password' at this point still holds the old hashed password from the DB fetch.
-    if (user.password) { // Ensure there's an old password to save
-      user.passwordHistory.unshift(user.password); // Add the old hashed password to the beginning
-      user.passwordHistory = user.passwordHistory.slice(0, 5); // Keep only the last 5 hashes
+    if (user.password) { 
+      user.passwordHistory.unshift(user.password); 
+      user.passwordHistory = user.passwordHistory.slice(0, 5); 
     }
 
-    // Set new password (plain text). The pre-save hook in your User model will hash it.
     user.password = password;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
