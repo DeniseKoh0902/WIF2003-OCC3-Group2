@@ -3,8 +3,8 @@ const DailyGoal = require('../models/dailyGoal');
 const WorkoutHistory = require('../models/WorkoutHistory');
 const Progress = require('../models/Progress');
 const Reminder = require('../models/Reminder');
-const Weights = require('../models/Weights');
-const Workout = require('../models/WorkoutDays');
+const WeightsChange = require('../models/Weights');
+const WorkoutDays = require('../models/WorkoutDays');
 const bcrypt = require('bcrypt');
 const path = require('path');
 const moment = require('moment');
@@ -165,14 +165,15 @@ exports.getDailyStreak = async (req, res) => {
 exports.deleteAccount = async (req, res) => {
   try {
     const userId = req.user.id;
+    const userIdStr = userId.toString();
 
     await Promise.all([
-      WorkoutHistory.deleteMany({ user_id: userId }),
-      DailyGoal.deleteMany({ user_id: userId }),
-      Progress.deleteMany({ user_id: userId }),
-      Reminder.deleteMany({ user_id: userId }),
-      Weights.deleteMany({ user_id: userId }),
-      Workout.deleteMany({ user_id: userId }),
+      WorkoutHistory.deleteMany({user_id:userIdStr}),
+      DailyGoal.deleteMany({_id:userId}),
+      Progress.deleteMany({user_id:userId}),
+      Reminder.deleteMany({user_id:userId}),
+      WeightsChange.deleteMany({user_id:userId}),
+      WorkoutDays.deleteMany({user_id:userId}),
       User.findByIdAndDelete(userId)
     ]);
 
