@@ -3,7 +3,7 @@ let dailyGoals = {
   steps: { goal: 10000, current: 0 },
   calories: { goal: 800, current: 0 },
   minutes: { goal: 60, current: 0 },
-  water: { goal: 8, current: 0 } // in liters
+  water: { goal: 8, current: 0 }
 };
 
 //array of motivational quotes
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.error("Error fetching streak:", streakErr);
     }
 
-    //Set current date
+    //set current date
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', options);
     
@@ -102,22 +102,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       btn.addEventListener('click', function(e) {
         e.stopPropagation();
         const statType = this.getAttribute('data-stat');
-        
-        // Debugging
         console.log('Opening modal for:', statType);
         
-        // Verify modal element exists
+        //verify modal element exists
         if (!document.getElementById('dailyGoalModal')) {
           console.error('Modal element not found!');
           return;
         }
-        
-        // Verify bootstrap is loaded
+        //verify bootstrap is loaded
         if (typeof bootstrap === 'undefined' || !bootstrap.Modal) {
           console.error('Bootstrap not loaded properly!');
           return;
         }
-        
         showGoalModal(statType);
       });
     });
@@ -203,7 +199,6 @@ function showGoalModal(statType) {
         progressContainer.style.display = 'none';
     }
 
-    // Show the modal
     const goalModal = new bootstrap.Modal(document.getElementById('dailyGoalModal'));
     goalModal.show();
 }
