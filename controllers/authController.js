@@ -51,21 +51,8 @@ exports.register = async (req, res) => {
     const newUser = new User({ username, email, password });
     const savedUser = await newUser.save();
 
-    const token = jwt.sign(
-      { id: savedUser._id, username: savedUser.username },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-
-    res.cookie('Authorization', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 * 1000,
-      sameSite: 'Lax'
-    });
-
     res.status(200).json({
-      message: "User registered successfully. Welcome to Charmsync!",
+      message: "You have registered successfully. Welcome to Charmsync!",
       username: savedUser.username,
       email: savedUser.email
     });
