@@ -1,8 +1,3 @@
-# WIF2003-OCC3-Group2
-Here's the content of your README, extracted from the images you provided:
-
------
-
 # WIF2003-OCC3-Group2 Readme
 
 ## Table of Contents
@@ -16,7 +11,7 @@ Here's the content of your README, extracted from the images you provided:
 
 ## Overview
 
-WIF2003-OCC3-Group2 is a comprehensive health and fitness tracking platform tailored for developers building personalized wellness applications. It combines scalable backend data management with engaging frontend components to deliver a seamless user experience. The core features include:
+Our project Charmsync is a comprehensive health and fitness tracking platform tailored for developers building personalized wellness applications. It combines scalable backend data management with engaging frontend components to deliver a seamless user experience. The core features include:
 
   * **Modular API Endpoints:** Facilitates secure, user-specific data handling for workouts, nutrition, and progress tracking.
   * **MongoDB Integration:** Ensures scalable storage and retrieval of health metrics, reminders, and user profiles.
