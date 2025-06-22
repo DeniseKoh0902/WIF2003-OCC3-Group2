@@ -7,12 +7,12 @@ Here's the content of your README, extracted from the images you provided:
 
 ## Table of Contents
 
-  * [Overview](##overview)
-  * [Getting Started](##getting-started)
-      * [Prerequisites](https://www.google.com/search?q=%23prerequisites)
-      * [Installation](https://www.google.com/search?q=%23installation)
-      * [Usage](https://www.google.com/search?q=%23usage)
-  * [Testing](https://www.google.com/search?q=%23testing)
+* [Overview](#overview)
+* [Getting Started](#getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Installation](#installation)
+    * [Usage](#usage)
+* [Testing](#testing)
 
 ## Overview
 
