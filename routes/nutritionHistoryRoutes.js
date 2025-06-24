@@ -68,42 +68,6 @@ router.get("/api/current-user", authMiddleware, async (req, res) => {
   }
 });
 
-// Get favorites endpoint
-// router.get("/api/favorites", authMiddleware, async (req, res) => {
-//   try {
-//     const favorites = await db.collection("NutritionHistory")
-//       .find({ user_id: req.user.id })
-//       .toArray();
-//     res.json(favorites);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Failed to fetch favorites" });
-//   }
-// });
-
-// router.get("/api/favorites", authMiddleware, async (req, res) => {
-//   try {
-//     const collection = db.collection("NutritionHistory");
-//     const user_id = req.user.id;
-
-//     const query = { user_id };
-
-//     if (req.query.date) {
-//       const date = new Date(req.query.date);
-//       const nextDay = new Date(date);
-//       nextDay.setDate(date.getDate() + 1);
-
-//       query.intake_date = { $gte: date, $lt: nextDay };
-//     }
-
-//     const favorites = await collection.find(query).toArray();
-//     res.json(favorites);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Failed to fetch favorites" });
-//   }
-// });
-
 router.get("/api/favorites", authMiddleware, async (req, res) => {
   try {
     const collection = db.collection("NutritionHistory");
@@ -234,7 +198,5 @@ router.delete("/api/favorites", authMiddleware, async (req, res) => {
     });
   }
 });
-
-// Other endpoints (expired and all favorites) follow the same pattern...
 
 module.exports = router;
