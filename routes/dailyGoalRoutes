@@ -24,25 +24,36 @@ function getCurrentFieldName(statType) {
   return fieldMap[statType];
 }
 
-// GET daily goals for authenticated user
+// GET daily goals with automatic daily reset
 router.get('/', authMiddleware, async (req, res) => {
   try {
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    // Reset only those outdated
+    await DailyGoal.updateMany(
+      { updatedAt: { $lt: todayStart } },
+      {
+        $set: { total_steps: 0, total_water_intake: 0 },
+        $currentDate: { updatedAt: true }
+      }
+    );
+
     const goals = await DailyGoal.findById(req.user.id)
-      .select('-_id -createdAt -updatedAt -__v') // Exclude unnecessary fields
+      .select('-_id -createdAt -updatedAt -__v')
       .lean();
 
     if (!goals) {
-      return res.status(404).json({ 
-        message: 'No goals found. Default goals will be created on first update.' 
+      return res.status(404).json({
+        message: 'No goals found. Set your goals first!'
       });
     }
 
     res.json(goals);
   } catch (err) {
-    console.error('Error fetching daily goals:', err);
-    res.status(500).json({ 
-      error: 'Server error while fetching goals',
-      details: process.env.NODE_ENV === 'development' ? err.message : undefined
+    console.error('Error fetching/resetting daily goals:', err);
+    res.status(500).json({
+      error: 'Server error while accessing daily goals'
     });
   }
 });
