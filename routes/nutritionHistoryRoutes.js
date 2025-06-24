@@ -6,7 +6,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 const uri =
   process.env.MONGO_URI ||
-  "mongodb+srv://admin:admin@progress.hgkftwq.mongodb.net/crud";
+  "mongodb+srv://admin:admin@cluster0.slbfzux.mongodb.net/crud";
 const dbName = "crud";
 
 // Create a reusable MongoClient instance
@@ -37,6 +37,25 @@ process.on('SIGINT', async () => {
   process.exit(0);
 });
 
+async function deleteNonTodayMeals(user_id) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Today 00:00:00
+
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1); // Tomorrow 00:00:00
+
+  const collection = db.collection("NutritionHistory");
+
+  const result = await collection.deleteMany({
+    user_id,
+    $or: [
+      { intake_date: { $lt: today } },
+      { intake_date: { $gte: tomorrow } }
+    ]
+  });
+}
+
+
 // Current user endpoint
 router.get("/api/current-user", authMiddleware, async (req, res) => {
   try {
@@ -50,17 +69,67 @@ router.get("/api/current-user", authMiddleware, async (req, res) => {
 });
 
 // Get favorites endpoint
+// router.get("/api/favorites", authMiddleware, async (req, res) => {
+//   try {
+//     const favorites = await db.collection("NutritionHistory")
+//       .find({ user_id: req.user.id })
+//       .toArray();
+//     res.json(favorites);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Failed to fetch favorites" });
+//   }
+// });
+
+// router.get("/api/favorites", authMiddleware, async (req, res) => {
+//   try {
+//     const collection = db.collection("NutritionHistory");
+//     const user_id = req.user.id;
+
+//     const query = { user_id };
+
+//     if (req.query.date) {
+//       const date = new Date(req.query.date);
+//       const nextDay = new Date(date);
+//       nextDay.setDate(date.getDate() + 1);
+
+//       query.intake_date = { $gte: date, $lt: nextDay };
+//     }
+
+//     const favorites = await collection.find(query).toArray();
+//     res.json(favorites);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Failed to fetch favorites" });
+//   }
+// });
+
 router.get("/api/favorites", authMiddleware, async (req, res) => {
   try {
-    const favorites = await db.collection("NutritionHistory")
-      .find({ user_id: req.user.id })
-      .toArray();
+    const collection = db.collection("NutritionHistory");
+    const user_id = req.user.id;
+
+    // 🔥 AUTO DELETE NON-TODAY MEALS
+    await deleteNonTodayMeals(user_id);
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const favorites = await collection.find({
+      user_id,
+      intake_date: { $gte: today, $lt: tomorrow }
+    }).toArray();
+
     res.json(favorites);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch favorites" });
   }
 });
+
+
 
 // Add favorite endpoint
 router.post("/api/favorites", authMiddleware, async (req, res) => {
