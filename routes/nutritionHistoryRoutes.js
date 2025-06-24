@@ -6,7 +6,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 const uri =
   process.env.MONGO_URI ||
-  "mongodb+srv://admin:admin@cluster0.slbfzux.mongodb.net/crud";
+  "mongodb+srv://admin:admin@progress.hgkftwq.mongodb.net/crud";
 const dbName = "crud";
 
 // Create a reusable MongoClient instance
