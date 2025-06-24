@@ -18,7 +18,6 @@ const reminderRoutes = require('./routes/reminderRoutes');
 const progressRoutes = require('./routes/progressRoutes');
 const workoutRoutes = require('./routes/workoutRoutes');
 const weightRoutes = require('./routes/weightRoutes'); 
-const initializeDailyReset = require('./cron/dailyReset')
 const authMiddleware = require('./middleware/authMiddleware');
 const cookieParser = require('cookie-parser');
 const path = require('path');
@@ -36,12 +35,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 connectDB(); 
-
-// Initialize the daily reset cron job after DB connection is established
-mongoose.connection.on('connected', () => {
-  console.log('MongoDB connected - initializing cron jobs');
-  initializeDailyReset();
-});
 
 mongoose.connection.on('error', (err) => {
   console.error('MongoDB connection error:', err);
