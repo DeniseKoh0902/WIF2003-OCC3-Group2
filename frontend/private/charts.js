@@ -9,7 +9,7 @@ const getDayMonthLabel = (dateString) => {
 };
 
 const getTimeInMinute = (time) => {
-    return Math.round(time / 60);
+    return Math.floor(time / 60);
 }
 
 function getYYYYMMDD(dateInput) {
@@ -399,8 +399,12 @@ function initializeActiveTimeChart(dailyProgressData) {
         return;
     }
 
-    const maxTime = Math.max(...values) * 1.2;
-    const displayMaxTime = maxTime > 0 ? maxTime : 60;
+    // const maxTime = Math.max(...values) * 1.2;
+    // // const paddedMax = Math.ceil(rawMax * 2.2);
+    // const displayMaxTime = maxTime > 0 ? maxTime : 60;
+    const rawMax = Math.max(...values);
+    const paddedMax = Math.ceil(rawMax * 2.2);
+    const displayMaxTime = paddedMax > 0 ? paddedMax : 10;
 
     const totalFrames = 60;
     let currentFrame = 0;
